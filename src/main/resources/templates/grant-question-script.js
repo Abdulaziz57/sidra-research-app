@@ -49,9 +49,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Add event listener to back button
     backButton.addEventListener("click", function () {
       // Navigate back
-      alert("Going back to previous page");
+      //alert("Going back to previous page");
       // In a real implementation, you would use:
-      // window.history.back();
+      window.location.href = dir+"/decisionTree.html";
     });
   });
   
