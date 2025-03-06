@@ -1,0 +1,205 @@
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f3f4f6;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Container */
+.container {
+  padding: 20px;
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo */
+.logo {
+  width: 250px;
+  height: auto;
+  margin-bottom: 30px;
+  display: block;
+}
+
+/* Title */
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 130%;
+  color: #000;
+  max-width: 800px;
+  margin-bottom: 30px;
+}
+
+/* Options list */
+.options-list {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Option container */
+.option-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+/* Radio button styling */
+.radio-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radio-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.radio-label {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.radio-button {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.35);
+  position: relative;
+}
+
+.radio-input:checked + .radio-label .radio-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.radio-input:focus + .radio-label .radio-button {
+  box-shadow: 0 0 0 3px rgba(3, 98, 105, 0.3);
+}
+
+/* Option text */
+.option-text {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 130%;
+  color: #000;
+  flex: 1;
+  cursor: pointer;
+}
+
+/* Back button */
+.back-button {
+  width: 150px;
+  height: 45px;
+  border-radius: 22px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 30px;
+  cursor: pointer;
+  background-color: #036269;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #024b50;
+}
+
+.back-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(3, 98, 105, 0.3);
+}
+
+/* Responsive styles */
+@media (max-width: 991px) {
+  .container {
+    padding: 15px;
+  }
+
+  .logo {
+    max-width: 200px;
+    margin-bottom: 25px;
+  }
+
+  .title {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+
+  .option-text {
+    font-size: 15px;
+  }
+
+  .back-button {
+    width: 130px;
+    height: 40px;
+    font-size: 16px;
+    margin-top: 25px;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 12px;
+  }
+
+  .logo {
+    max-width: 150px;
+    margin-bottom: 20px;
+  }
+
+  .title {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .option-container {
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .option-text {
+    font-size: 14px;
+  }
+
+  .back-button {
+    height: 36px;
+    font-size: 14px;
+    margin-top: 20px;
+  }
+}
