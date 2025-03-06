@@ -1,0 +1,219 @@
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Inter", sans-serif;
+    background-color: #f3f4f6;
+    min-height: 100vh;
+  }
+  
+  /* App container */
+  .app {
+    min-height: 100vh;
+    background: #f3f4f6;
+    padding: 20px;
+  }
+  
+  /* Logo section */
+  .logo {
+    padding: 20px 0 20px 20px;
+  }
+  
+  .logo-img {
+    width: 200px;
+    height: auto;
+  }
+  
+  /* Question container */
+  .question-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* Question */
+  .question {
+    background: #008080;
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: "Inter", sans-serif;
+    font-size: 22px;
+    line-height: 130%;
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  }
+  
+  /* Options section */
+  .options {
+    margin-top: 30px;
+  }
+  
+  /* Option */
+  .option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  /* Checkbox styling */
+  .checkbox {
+    width: 24px;
+    height: 24px;
+    border: 2px solid rgba(0, 128, 128, 0.96);
+    background: #fff;
+    margin-right: 15px;
+    appearance: none;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .checkbox:checked::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background-color: #008080;
+  }
+  
+  /* Label */
+  .label {
+    color: #000;
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 130%;
+  }
+  
+  /* Button container */
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  
+  /* Back button */
+  .back-button {
+    width: 120px;
+    height: 40px;
+    background: #036269;
+    border-radius: 20px;
+    border: none;
+    color: #fff;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 130%;
+    cursor: pointer;
+  }
+  
+  /* Continue button */
+  .continue-button {
+    width: 120px;
+    height: 40px;
+    background: #036269;
+    border-radius: 20px;
+    border: none;
+    color: #fff;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 130%;
+    cursor: pointer;
+  }
+  
+  /* Hover states */
+  .back-button:hover,
+  .continue-button:hover {
+    background-color: #024b50;
+  }
+  
+  /* Focus states */
+  .back-button:focus,
+  .continue-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(3, 98, 105, 0.3);
+  }
+  
+  /* Responsive styles */
+  @media (min-width: 768px) {
+    .logo-img {
+      width: 250px;
+    }
+  
+    .question {
+      font-size: 26px;
+      padding: 18px 25px;
+    }
+  
+    .checkbox {
+      width: 28px;
+      height: 28px;
+      margin-right: 20px;
+    }
+  
+    .checkbox:checked::after {
+      width: 14px;
+      height: 14px;
+    }
+  
+    .label {
+      font-size: 22px;
+    }
+  
+    .back-button,
+    .continue-button {
+      width: 150px;
+      height: 45px;
+      font-size: 18px;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .logo {
+      padding: 20px 0 30px 40px;
+    }
+  
+    .logo-img {
+      width: 300px;
+      height: auto;
+    }
+  
+    .question {
+      font-size: 32px;
+      padding: 20px 30px;
+    }
+  
+    .checkbox {
+      width: 32px;
+      height: 32px;
+      border-width: 3px;
+      margin-right: 25px;
+    }
+  
+    .checkbox:checked::after {
+      width: 16px;
+      height: 16px;
+    }
+  
+    .label {
+      font-size: 28px;
+    }
+  
+    .back-button,
+    .continue-button {
+      width: 180px;
+      height: 50px;
+      border-radius: 25px;
+      font-size: 20px;
+    }
+  }
+  
