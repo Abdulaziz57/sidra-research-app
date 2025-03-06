@@ -1,5 +1,6 @@
 package Sidra.sidra_research_application.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,18 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/admin")
+@PreAuthorize("hasAuthority('APPROLE_Admin')")
 public class AdminController {
 
-    /**
-     * This means the GET request to "/admin" (no trailing slash)
-     * will return the "admin" view.
-     */
-    @GetMapping
+
+    @GetMapping("")
     public String adminHome() {
-        // Looks for "admin.html" in src/main/resources/templates
         return "adminPage";
     }
+
 }
-
-
-
