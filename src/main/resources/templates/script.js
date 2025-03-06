@@ -4,16 +4,17 @@ document.addEventListener("DOMContentLoaded", function () {
       'input[type="radio"][name="projectOption"]',
     );
     const continueButton = document.getElementById("continueButton");
-  
+    var loc = window.location.pathname;
+    var dir = loc.substring(0, loc.lastIndexOf('/'));
     // Define destination URLs for each option
     const destinations = {
-      option1: "/clinical-practice-guidelines",
-      option2: "/clinical-outcomes-measurement",
-      option3: "/research-department",
-      option4: "/product-evaluation",
-      option5: "/case-reports",
-      option6: "/service-effectiveness",
-      option7: "/quality-improvement",
+      option1: dir+"/clinical-practice-guidelines"+".html",
+      option2: dir+"/clinical-outcomes-measurement"+".html",
+      option3: dir+"/research-department"+".html",
+      option4: dir+"/product-evaluation"+".html",
+      option5: dir+"/case-reports"+".html",
+      option6: dir+"/service-effectiveness"+".html",
+      option7: dir+"/quality-improvement"+".html",
     };
   
     let selectedOption = null;
@@ -37,8 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
   
         // For demonstration purposes, alert the destination
         // In a real implementation, you would use:
-        // window.location.href = destination;
-        alert(`Navigating to: ${destination}`);
+        window.location.href = destination;
+        //alert(`Navigating to: ${destination}`);
       }
     });
   

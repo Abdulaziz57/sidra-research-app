@@ -118,6 +118,15 @@ body {
   cursor: pointer;
 }
 
+/* Button container */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  width: 100%;
+}
+
 /* Back button */
 .back-button {
   width: 150px;
@@ -126,7 +135,6 @@ body {
   color: #fff;
   font-size: 18px;
   font-weight: 700;
-  margin-top: 30px;
   cursor: pointer;
   background-color: #036269;
   border: none;
@@ -141,6 +149,32 @@ body {
 }
 
 .back-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(3, 98, 105, 0.3);
+}
+
+/* Continue button */
+.continue-button {
+  width: 150px;
+  height: 45px;
+  border-radius: 22px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  background-color: #036269;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.continue-button:hover {
+  background-color: #024b50;
+}
+
+.continue-button:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(3, 98, 105, 0.3);
 }
@@ -165,11 +199,15 @@ body {
     font-size: 15px;
   }
 
-  .back-button {
+  .button-container {
+    margin-top: 25px;
+  }
+
+  .back-button,
+  .continue-button {
     width: 130px;
     height: 40px;
     font-size: 16px;
-    margin-top: 25px;
   }
 }
 
@@ -197,9 +235,25 @@ body {
     font-size: 14px;
   }
 
-  .back-button {
+  .button-container {
+    margin-top: 20px;
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+  }
+
+  .button-container .back-button {
+    order: 2;
+  }
+
+  .button-container .continue-button {
+    order: 1;
+  }
+
+  .back-button,
+  .continue-button {
+    width: 100%;
     height: 36px;
     font-size: 14px;
-    margin-top: 20px;
   }
 }
