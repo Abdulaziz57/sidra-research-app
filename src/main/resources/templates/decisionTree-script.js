@@ -10,9 +10,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const destinations = {
       option1: dir+"/clinical-practice-guidelines"+".html",
       option2: dir+"/clinical-outcomes-measurement"+".html",
-      option3: dir+"/research-department"+".html",
-      option4: dir+"/product-evaluation"+".html",
-      option5: dir+"/case-reports"+".html",
+      option3: dir+"/grant-question"+".html",
+      option4: dir+"/grant-question"+".html",
+      option5: dir+"/grant-question"+".html",
       option6: dir+"/service-effectiveness"+".html",
       option7: dir+"/quality-improvement"+".html",
     };
