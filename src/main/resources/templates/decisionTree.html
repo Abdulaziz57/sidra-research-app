@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Sidra Medicine Project Selection</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="decisionTree-styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/fec6d81e4e6a05c3f7bfe9354ad525985702ab7a"
+          alt="Sidra Medicine Logo"
+          class="logo"
+        />
+      </header>
+
+      <h1 class="title">
+        In order to be accurately directed to the appropriate department at
+        Sidra medicine please choose one of the following options which best
+        describes your project idea.
+      </h1>
+
+      <form>
+        <fieldset class="options-list">
+          <legend class="visually-hidden">Project Options</legend>
+
+          <div class="option-container">
+            <div class="radio-wrapper">
+              <input
+                type="radio"
+                id="option1"
+                name="projectOption"
+                class="radio-input"
+              />
+              <label for="option1" class="radio-label">
+                <span class="radio-button"></span>
+              </label>
+            </div>
+            <label for="option1" class="option-text">
+              I would like to understand if our service is following the
+              recommended processes outlined in the Clinical Practice
+              guidelines.
+            </label>
+          </div>
+
+          <div class="option-container">
+            <div class="radio-wrapper">
+              <input
+                type="radio"
+                id="option2"
+                name="projectOption"
+                class="radio-input"
+              />
+              <label for="option2" class="radio-label">
+                <span class="radio-button"></span>
+              </label>
+            </div>
+            <label for="option2" class="option-text">
+              I would like to measure clinical outcomes of a population based on
+              the care and treatment they receive.
+            </label>
+          </div>
+
+          <div class="option-container">
+            <div class="radio-wrapper">
+              <input
+                type="radio"
+                id="option3"
+                name="projectOption"
+                class="radio-input"
+              />
+              <label for="option3" class="radio-label">
+                <span class="radio-button"></span>
+              </label>
+            </div>
+            <label for="option3" class="option-text">
+              I would like to attempt to derive generalizable new knowledge by
+              addressing clearly defined questions with systematic and rigorous
+              scientific methods.
+            </label>
+          </div>
+
+          <div class="option-container">
+            <div class="radio-wrapper">
+              <input
+                type="radio"
+                id="option4"
+                name="projectOption"
+                class="radio-input"
+              />
+              <label for="option4" class="radio-label">
+                <span class="radio-button"></span>
+              </label>
+            </div>
+            <label for="option4" class="option-text">
+              I would like to evaluate a product, medical equipment, or a new
+              drug e.g. evaluating a new wound dressing with an external
+              commercial entity...
+            </label>
+          </div>
+
+          <div class="option-container">
+            <div class="radio-wrapper">
+              <input
+                type="radio"
+                id="option5"
+                name="projectOption"
+                class="radio-input"
+              />
+              <label for="option5" class="radio-label">
+                <span class="radio-button"></span>
+              </label>
+            </div>
+            <label for="option5" class="option-text">
+              I would like to publish a detailed report of the outcomes of a
+              process, solutions, treatment, and follow-up of an individual
+              patient or a group of patients...
+            </label>
+          </div>
+
+          <div class="option-container">
+            <div class="radio-wrapper">
+              <input
+                type="radio"
+                id="option6"
+                name="projectOption"
+                class="radio-input"
+              />
+              <label for="option6" class="radio-label">
+                <span class="radio-button"></span>
+              </label>
+            </div>
+            <label for="option6" class="option-text">
+              I would like to assess the effectiveness of our services or of an
+              intervention already in place.
+            </label>
+          </div>
+
+          <div class="option-container">
+            <div class="radio-wrapper">
+              <input
+                type="radio"
+                id="option7"
+                name="projectOption"
+                class="radio-input"
+              />
+              <label for="option7" class="radio-label">
+                <span class="radio-button"></span>
+              </label>
+            </div>
+            <label for="option7" class="option-text">
+              I would like to identify the root cause of a problem and test a
+              series of solutions with the intention to improve specific aspects
+              of patient care or services...
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="button-container">
+          <button type="button" class="back-button">Back</button>
+          <button
+            type="button"
+            class="continue-button"
+            id="continueButton"
+            style="display: none"
+          >
+            Continue
+          </button>
+        </div>
+      </form>
+
+      <script src="decisionTree-script.js"></script>
+    </main>
+  </body>
+</html>
