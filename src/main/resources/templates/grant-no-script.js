@@ -56,9 +56,9 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = dir+"/grant-no-no-path.html";
       } else if (notSureCheckbox.checked) {
         // Navigate to the "Not Sure" destination
-        alert("Navigating to Information/Help page");
+        //alert("Navigating to Information/Help page");
         // In a real implementation, you would use:
-        // window.location.href = "/research-help-path";
+        window.location.href = dir+"/grant-no-notSure-path.html";
       }
     });
   
