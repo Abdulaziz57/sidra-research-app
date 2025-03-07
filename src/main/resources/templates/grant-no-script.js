@@ -46,9 +46,9 @@ document.addEventListener("DOMContentLoaded", function () {
     continueButton.addEventListener("click", function () {
       if (yesCheckbox.checked) {
         // Navigate to the "Yes" destination
-        alert("Navigating to Human-Subject Research path");
+        //alert("Navigating to Human-Subject Research path");
         // In a real implementation, you would use:
-        // window.location.href = "/human-subject-path";
+        window.location.href = dir+"/grant-no-yes-path.html";
       } else if (noCheckbox.checked) {
         // Navigate to the "No" destination
         alert("Navigating to Non-Human-Subject Research path");
