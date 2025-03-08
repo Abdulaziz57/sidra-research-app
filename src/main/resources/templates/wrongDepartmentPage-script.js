@@ -146,7 +146,9 @@ function getUrlParameter(name) {
     if (backButton) {
       backButton.addEventListener("click", function (e) {
         e.preventDefault();
-        window.history.back();
+        var loc = window.location.pathname;
+        var dir = loc.substring(0, loc.lastIndexOf("/"));
+        window.location.href = dir + "/decisionTree.html";
       });
     }
   
@@ -157,7 +159,7 @@ function getUrlParameter(name) {
         // Navigate to the decision tree page
         var loc = window.location.pathname;
         var dir = loc.substring(0, loc.lastIndexOf("/"));
-        window.location.href = dir + "/decisionTree.html";
+        window.location.href = dir + "/researcherPage.html";
       });
     }
   }
