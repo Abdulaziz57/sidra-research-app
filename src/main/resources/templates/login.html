@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidra Research App - Login</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f3f4f6;
+            font-family: Arial, sans-serif;
+        }
+        .login-container {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 500px; /* Increase width */
+            height: 400px;
+        }
+
+        .logo {
+            max-width: 350px;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: 20px;
+            margin-bottom: 1rem;
+        }
+        .login-button {
+            background-color: #0a7355;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .login-button:hover {
+            background-color: #085c41;
+        }
+        .description {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5fe0ae6b079921c01f73a14cf750f2d80a7f98547c676dcb530b01ca135bafd4?placeholderIfAbsent=true&apiKey=80a512e1fc2a422285d8bcb5e67321ec" alt="Sidra Medicine" class="logo">
+        <h1>Login to Sidra Research App</h1>
+        <p class="description">
+            Welcome to the Sidra Research Portal.
+            This system allows researchers to securely submit, track,
+            and manage their applications for research approvals.
+        </p>
+
+
+        <!-- Redirects to OAuth2 login -->
+        <form action="/oauth2/authorization/azure" method="get">
+            <button type="submit" class="login-button">Login with Sidra Credentials</button>
+        </form>
+    </div>
+
+</body>
+</html>
