@@ -95,12 +95,12 @@ document.addEventListener("DOMContentLoaded", function () {
       // Navigate based on selection
       if (selectedOption === "yes") {
         console.log("Navigating to YES path");
-        alert("You selected YES - navigating to the YES path");
-        // window.location.href = "yes-path.html"; // Uncomment and update with actual path
+        //alert("You selected YES - navigating to the YES path");
+        window.location.href = "dt-interventional-yes.html"; // Uncomment and update with actual path
       } else if (selectedOption === "no") {
         console.log("Navigating to NO path");
-        alert("You selected NO - navigating to the NO path");
-        // window.location.href = "no-path.html"; // Uncomment and update with actual path
+        //alert("You selected NO - navigating to the NO path");
+        window.location.href = "dt-interventional-no.html"; // Uncomment and update with actual path
       }
     }
   });

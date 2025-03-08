@@ -56,12 +56,12 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       if (response.ok) {
-        alert("Documents submitted successfully!");
         fileInput.value = "";
         selectedFiles = [];
         uploadText.textContent = "⬆ Upload Documents";
         uploadBox.style.borderColor = "rgba(0, 0, 0, 0.1)";
         uploadText.style.color = "rgba(0, 0, 0, 0.27)";
+        window.location.href = "thankYouPage.html";
       } else {
         alert("Failed to submit documents.");
       }

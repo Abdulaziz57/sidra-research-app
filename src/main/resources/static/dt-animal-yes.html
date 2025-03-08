@@ -60,6 +60,11 @@
           </div>
         </div>
         <script>
+          document.getElementById("back-button").addEventListener("click", function() {
+              window.location.href = "/grant-no-no-path.html"; // This calls the Spring Boot route
+          });
+      </script>
+        <script>
           document.getElementById("file-upload").addEventListener("change", function(event) {
             const fileList = document.getElementById("file-list");
             fileList.innerHTML = "";

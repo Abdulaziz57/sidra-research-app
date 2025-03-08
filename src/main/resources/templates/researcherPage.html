@@ -191,9 +191,15 @@
     <div class="main-content">
         <div class="header">
             <h1>Researcher Dashboard</h1>
-            <button class="button">+ Start New Application</button>
+            <button class="button" id="startApplication">+ Start New Application</button>
         </div>
-
+    
+    
+    <script>
+        document.getElementById("startApplication").addEventListener("click", function() {
+            window.location.href = "/decisionTree.html"; // This calls the Spring Boot route
+        });
+    </script>
         <div class="welcome-box">
             <h3>Welcome to your Dashboard</h3>
             <p>You will find all your Rejected, Pending, and Approved applications here.</p>

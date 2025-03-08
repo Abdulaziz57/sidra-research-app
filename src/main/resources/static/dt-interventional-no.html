@@ -13,6 +13,7 @@
     />
     <link rel="stylesheet" href="grant-no-notSure-styles.css" />
   </head>
+
   <body>
     <div class="container">
       <img
@@ -23,9 +24,12 @@
 
       <div class="main-content">
 
+        <h1>
+          Your Research Activity will require Institutional Review Board (IRB) protocol Approval.
+        </h1>
 
         <p class="subtitle">
-           Please refer to the IACUC team at iacuc@sidra.org
+          Please refer to the IRB office at irb@sidra.org
         </p>
 
         <h2 class="instructions-title">To proceed with your application:</h2>
@@ -59,6 +63,11 @@
             <button class="submit-btn" id="submit-button">Submit</button>
           </div>
         </div>
+        <script>
+          document.getElementById("back-button").addEventListener("click", function() {
+              window.location.href = "/grant-no-yes-path.html"; // This calls the Spring Boot route
+          });
+      </script>
         <script>
           document.getElementById("file-upload").addEventListener("change", function(event) {
             const fileList = document.getElementById("file-list");

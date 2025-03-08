@@ -25,7 +25,7 @@
 
 
         <p class="subtitle">
-          Please refer to the Clinical Trails Office (CTO) office at clinicaltrialsoffice@sidra.org
+           Please refer to the IACUC team at iacuc@sidra.org
         </p>
 
         <h2 class="instructions-title">To proceed with your application:</h2>
@@ -34,7 +34,7 @@
           <p class="instruction-text">
             Download and fill the
             <a href="#" class="instruction-link"
-              >application form document (Appendix 4)</a
+              >application form document (Appendix 2)</a
             >.
           </p>
 
@@ -59,6 +59,11 @@
             <button class="submit-btn" id="submit-button">Submit</button>
           </div>
         </div>
+        <script>
+          document.getElementById("back-button").addEventListener("click", function() {
+              window.location.href = "/grant-no-no-path.html"; // This calls the Spring Boot route
+          });
+      </script>
         <script>
           document.getElementById("file-upload").addEventListener("change", function(event) {
             const fileList = document.getElementById("file-list");
