@@ -42,14 +42,7 @@
             font-size: 14px;
             text-align: justify;
         }
-        .signout {
-            margin-top: auto;
-            color: #c00f0c;
-            font-weight: bold;
-            cursor: pointer;
-            padding-top: 20px;
-            font-size: 16px;
-        }
+
         .main-content {
             margin-left: 320px;
             flex: 1;
@@ -115,6 +108,40 @@
             background: #ffccbc;
             color: #c62828;
         }
+        .signout-icon {
+            width: 20px;
+            height: 20px;
+        }
+        .signout-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: auto;
+            color: #c00f0c;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .signout-button {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #c00f0c;
+            font-size: 1rem;
+            font-weight: 600;
+            width: 100%;
+            text-align: left;
+            padding: 0.8rem;
+            }
+
+        .signout-button:hover {
+            opacity: 0.8;
+        }
+
         @media (max-width: 991px) {
             .sidebar {
                 width: 100%;
@@ -148,7 +175,17 @@
             <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5fe0ae6b079921c01f73a14cf750f2d80a7f98547c676dcb530b01ca135bafd4" alt="Sidra Medicine">
             <p>Sidra Medicine advances healthcare through research and innovation. This portal enables researchers to submit, track, and manage applications efficiently.</p>
         </div>
-        <div class="signout">&#10145; Sign Out</div>
+        <form th:action="@{/logout}" method="post" class="signout-item">
+            <button type="submit" class="signout-button">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/28b5f78cd252ed23988571dddd34923a796b877e39696ff79c1a04fbd4a8797b?placeholderIfAbsent=true&apiKey=80a512e1fc2a422285d8bcb5e67321ec"
+                alt="Sign Out Icon"
+                class="signout-icon"
+              />
+              <h2 class="signout-text">Sign Out</h2>
+            </button>
+        </form>
+
     </div>
 
     <div class="main-content">
