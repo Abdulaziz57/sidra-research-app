@@ -41,11 +41,14 @@ public class SecurityConfig {
                     response.sendRedirect(targetUrl);
                 })
             )
+
             .logout(logout -> logout
-                .logoutSuccessUrl("/")
-                .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID")
-            );
+            .logoutUrl("/logout") 
+            .logoutSuccessUrl("https://login.microsoftonline.com/common/oauth2/logout?post_logout_redirect_uri=http://localhost:9191/")
+            .invalidateHttpSession(true)
+            .clearAuthentication(true)
+            .deleteCookies("JSESSIONID")
+        );
 
         return http.build();
     }
