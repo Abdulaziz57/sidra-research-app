@@ -159,7 +159,7 @@ function getUrlParameter(name) {
         // Navigate to the decision tree page
         var loc = window.location.pathname;
         var dir = loc.substring(0, loc.lastIndexOf("/"));
-        window.location.href = dir + "/researcherPage.html";
+        window.location.href = dir + "/researcher";
       });
     }
   }

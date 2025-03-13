@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (backButton) {
     backButton.addEventListener("click", function () {
       // Go back to the previous page
-      window.location.href = dir + "/researcherPage.html";
+      window.location.href = dir + "/researcher";
     });
   }
 });

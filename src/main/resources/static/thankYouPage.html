@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Application Submitted - Confirmation</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="thankYouPage-styles.css" />
+  </head>
+  <body>
+    <main class="app-container">
+      <header class="logo">
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/fec6d81e4e6a05c3f7bfe9354ad525985702ab7a"
+          alt="Sidra Medicine Logo"
+          class="logo-img"
+        />
+      </header>
+
+      <section class="content-card">
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/f06308302310f09cd330cb65e405e63bac1adfd2"
+          alt="Hourglass Icon"
+          class="hourglass-icon"
+        />
+
+        <h1 class="title">Application Submitted</h1>
+
+        <p class="subtitle">
+          Congratulations! Your application has been submitted.
+        </p>
+
+        <div class="info-box">
+          <div class="info-row">
+            <div class="info-label">Application ID:</div>
+            <div class="info-value">APP-12345</div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-label">Date Submitted:</div>
+            <div class="info-value">2025-02-03</div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-label">Status:</div>
+            <div class="info-value status-pending">Pending</div>
+          </div>
+        </div>
+        <button class="home-button" id="home-button">Home</button>
+        <script>
+            document.getElementById("home-button").addEventListener("click", function() {
+                window.location.href = "/researcher"; // This calls the Spring Boot route
+            });
+        </script>
+      </section>
+    </main>
+  </body>
+</html>

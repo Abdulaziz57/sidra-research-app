@@ -1,0 +1,311 @@
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f3f4f6;
+  min-height: 100vh;
+}
+
+/* Container */
+.container {
+  background: #f3f4f6;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Keeping center alignment as requested */
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo */
+.logo {
+  width: 180px; /* Reduced from 250px */
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+/* Content section */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+  max-width: 800px;
+  width: 100%;
+}
+
+/* Title */
+.title {
+  font-family: "Inter", sans-serif;
+  font-size: 22px; /* Reduced from 28px */
+  font-weight: 700;
+  color: #000;
+  line-height: 130%;
+}
+
+/* Subtitle */
+.subtitle {
+  font-family: "Inter", sans-serif;
+  font-size: 18px; /* Reduced from 22px */
+  font-weight: 700;
+  color: #000;
+  margin-top: 10px;
+}
+
+/* Instructions */
+.instructions {
+  font-family: "Inter", sans-serif;
+  font-size: 16px; /* Reduced from 18px */
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Instruction */
+.instruction {
+  line-height: 130%;
+}
+
+/* Link */
+.link {
+  color: #0a50b3;
+  text-decoration: underline;
+}
+
+/* Upload box */
+.upload-box {
+  width: 100%;
+  max-width: 800px;
+  height: 50px; /* Reduced from 60px */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  margin-top: 15px;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Upload text */
+.upload-text {
+  font-family: "Inter", sans-serif;
+  font-size: 16px; /* Reduced from 18px */
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.27);
+}
+
+/* File input */
+.file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.file-list {
+  margin-top: 10px;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f1f1f1;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+.remove-file {
+  background: red;
+  color: white;
+  border: none;
+  padding: 2px 6px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+
+/* Button container */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px;
+  margin-top: 30px;
+}
+
+/* Back button - using the same styling as previous pages */
+.back-button {
+  width: 120px; /* Reduced from 150px */
+  height: 40px; /* Reduced from 45px */
+  border-radius: 20px; /* Reduced from 22px */
+  background: #036269;
+  border: none;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 16px; /* Reduced from 18px */
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #024b50;
+}
+
+.back-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(3, 98, 105, 0.3);
+}
+
+/* Submit button - using the same styling as the back button for consistency */
+.submit-button {
+  width: 120px; /* Reduced from 150px */
+  height: 40px; /* Reduced from 45px */
+  border-radius: 20px; /* Reduced from 22px */
+  background: #036269;
+  border: none;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 16px; /* Reduced from 18px */
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #024b50;
+}
+
+.submit-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(3, 98, 105, 0.3);
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+  .container {
+    padding: 30px;
+    gap: 30px;
+  }
+
+  .logo {
+    width: 220px; /* Reduced from 350px */
+    margin-bottom: 30px;
+  }
+
+  .title {
+    font-size: 24px; /* Reduced from 36px */
+  }
+
+  .subtitle {
+    font-size: 20px; /* Reduced from 28px */
+  }
+
+  .instructions {
+    font-size: 18px; /* Reduced from 22px */
+    gap: 15px;
+  }
+
+  .upload-box {
+    height: 55px; /* Reduced from 80px */
+  }
+
+  .upload-text {
+    font-size: 18px; /* Reduced from 24px */
+  }
+
+  .back-button,
+  .submit-button {
+    width: 140px; /* Reduced from 200px */
+    height: 45px; /* Reduced from 55px */
+    font-size: 16px; /* Reduced from 20px */
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    padding: 40px;
+    gap: 40px;
+  }
+
+  .logo {
+    width: 250px; /* Reduced from 450px */
+    margin-bottom: 40px;
+  }
+
+  .content {
+    max-width: 1000px;
+    gap: 20px;
+  }
+
+  .title {
+    font-size: 28px; /* Reduced from 42px */
+  }
+
+  .subtitle {
+    font-size: 22px; /* Reduced from 32px */
+    margin-top: 15px;
+  }
+
+  .instructions {
+    font-size: 18px; /* Reduced from 26px */
+    gap: 20px;
+  }
+
+  .upload-box {
+    height: 60px; /* Reduced from 100px */
+    margin-top: 20px;
+  }
+
+  .upload-text {
+    font-size: 18px; /* Reduced from 28px */
+  }
+
+  .button-container {
+    max-width: 1000px;
+  }
+
+  .back-button,
+  .submit-button {
+    width: 150px; /* Reduced from 250px */
+    height: 45px; /* Reduced from 60px */
+    font-size: 18px; /* Reduced from 24px */
+    border-radius: 22px; /* Reduced from 30px */
+  }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+  .button-container {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .back-button,
+  .submit-button {
+    width: 100%;
+    max-width: 200px; /* Reduced from 250px */
+  }
+}
