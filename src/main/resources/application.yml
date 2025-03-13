@@ -8,10 +8,10 @@ spring:
         credential:
           client-id: 48e5f5e5-601a-4b09-abc6-631c6d60d2ee
           client-secret: TSC8Q~cksa-eIBT5TzCYKpKcWSmawU8EUvDDLahh
-      user-group:
-        allowed-groups:
-          - "Admin"
-          - "Researcher"
+        user-group:
+          allowed-groups:
+            - "Admin"
+            - "Researcher"
 
 server:
   port: 9191

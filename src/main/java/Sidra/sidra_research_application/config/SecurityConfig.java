@@ -11,7 +11,13 @@ import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserService;
 import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,16 +30,17 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/login", "/css/**").permitAll()
+                .requestMatchers("/login", "/css/**").permitAll() // Allow public access
                 .requestMatchers("/admin/**").hasAuthority("APPROLE_Admin")
                 .requestMatchers("/researcher/**").hasAuthority("APPROLE_Researcher")
                 .anyRequest().authenticated()
             )
             .oauth2Login(oauth2 -> oauth2
-                .loginPage("/login") 
+                .loginPage("/login")
                 .userInfoEndpoint(userInfo -> userInfo.oidcUserService(oidcUserService()))
+                .defaultSuccessUrl("/default", true) // Set a default success URL
                 .successHandler((request, response, authentication) -> {
-                    String targetUrl = "/login";;
+                    String targetUrl = "/default";
                     if (authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("APPROLE_Admin"))) {
                         targetUrl = "/admin";
                     } else if (authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("APPROLE_Researcher"))) {
@@ -42,14 +49,13 @@ public class SecurityConfig {
                     response.sendRedirect(targetUrl);
                 })
             )
-
             .logout(logout -> logout
-            .logoutUrl("/logout")
-            .logoutSuccessUrl("https://login.microsoftonline.com/common/oauth2/logout?post_logout_redirect_uri=http://localhost:9191/")
-            .invalidateHttpSession(true)
-            .clearAuthentication(true)
-            .deleteCookies("JSESSIONID")
-        );
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("https://login.microsoftonline.com/common/oauth2/logout?post_logout_redirect_uri=http://localhost:9191/")
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .deleteCookies("JSESSIONID")
+            );
 
         return http.build();
     }
@@ -61,12 +67,10 @@ public class SecurityConfig {
             public OidcUser loadUser(OidcUserRequest userRequest) {
                 OidcUser oidcUser = super.loadUser(userRequest);
 
-                // Extract roles from the "roles" claim
                 List<String> roles = oidcUser.getClaims().containsKey("roles")
                         ? (List<String>) oidcUser.getClaims().get("roles")
                         : List.of();
 
-                // Map roles to authorities
                 Collection<GrantedAuthority> mappedAuthorities = roles.stream()
                         .map(role -> new SimpleGrantedAuthority("APPROLE_" + role))
                         .collect(Collectors.toList());
