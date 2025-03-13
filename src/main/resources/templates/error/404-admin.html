@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Page Not Found</title>
+    <link rel="stylesheet" href="/css/404.css" />
+  </head>
+  <body>
+    <main class="error-container">
+      <div class="error-card">
+        <div class="error-icon">🔍</div>
+        <h1 class="error-title">Page Not Found ADMIN</h1>
+        <div class="error-code">Error 404</div>
+        <p class="error-message">
+          The page you are looking for might have been removed, had its name
+          changed, or is temporarily unavailable. Please check the URL or
+          navigate back to the dashboard.
+        </p>
+        <div class="error-actions">
+          <!-- Role-based redirection -->
+          <a th:if="${#authorization.expression('hasAuthority(''APPROLE_Researcher'')')}" th:href="@{/researcher}" class="back-button">
+            Return to Researcher Dashboard
+          </a>
+          <a th:if="${#authorization.expression('hasAuthority(''APPROLE_Admin'')')}" th:href="@{/admin}" class="back-button">
+            Return to Admin Dashboard
+          </a>
+          <a th:if="${#authorization.expression('hasAuthority(''APPROLE_Guest'')')}" th:href="@{/}" class="back-button">
+            Return to Home Page
+          </a>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
