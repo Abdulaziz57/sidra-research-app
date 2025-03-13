@@ -10,7 +10,7 @@
     <main class="error-container">
       <div class="error-card">
         <div class="error-icon">🔍</div>
-        <h1 class="error-title">Page Not Found Researcher</h1>
+        <h1 class="error-title">Page Not Found</h1>
         <div class="error-code">Error 404</div>
         <p class="error-message">
           The page you are looking for might have been removed, had its name
@@ -18,15 +18,8 @@
           navigate back to the dashboard.
         </p>
         <div class="error-actions">
-          <!-- Role-based redirection -->
-          <a th:if="${#authorization.expression('hasAuthority(''APPROLE_Researcher'')')}" th:href="@{/researcher}" class="back-button">
-            Return to Researcher Dashboard
-          </a>
-          <a th:if="${#authorization.expression('hasAuthority(''APPROLE_Admin'')')}" th:href="@{/admin}" class="back-button">
-            Return to Admin Dashboard
-          </a>
-          <a th:if="${#authorization.expression('hasAuthority(''APPROLE_Guest'')')}" th:href="@{/}" class="back-button">
-            Return to Home Page
+          <a th:href="@{/researcher}" class="back-button">
+            Return to Researcher Page
           </a>
         </div>
       </div>
