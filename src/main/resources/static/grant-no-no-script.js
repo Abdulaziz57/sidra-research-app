@@ -106,11 +106,11 @@ document.addEventListener("DOMContentLoaded", function () {
       if (selectedOption === "yes") {
         //alert("Proceeding to animal study path...");
         // Here you would navigate to the next step or show additional fields
-        window.location.href = "dt-animal-no.html";
+        window.location.href = "dt-animal-yes.html";
       } else {
         //alert("Proceeding to non-animal study path...");
         // Here you would navigate to the alternative path
-        window.location.href = "dt-animal-yes.html";
+        window.location.href = "dt-animal-no.html";
       }
     });
   
