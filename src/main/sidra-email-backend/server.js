@@ -39,7 +39,7 @@ app.post("/upload", upload.array("files"), async (req, res) => {
 
     const mailOptions = {
       from: process.env.EMAIL,
-      to: "1researchpmo@sidra.org", // Replace with the actual recipient email
+      to: "researchpmo@sidra.org", // Replace with the actual recipient email
       subject: "New Grant Application Submission",
       text: "Attached are the submitted grant application documents.",
       attachments: attachments,
