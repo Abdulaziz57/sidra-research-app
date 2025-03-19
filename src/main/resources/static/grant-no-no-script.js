@@ -104,11 +104,13 @@ document.addEventListener("DOMContentLoaded", function () {
   
       // Simulate proceeding to next step
       if (selectedOption === "yes") {
-        alert("Proceeding to animal study path...");
+        //alert("Proceeding to animal study path...");
         // Here you would navigate to the next step or show additional fields
+        window.location.href = "dt-animal-yes.html";
       } else {
-        alert("Proceeding to non-animal study path...");
+        //alert("Proceeding to non-animal study path...");
         // Here you would navigate to the alternative path
+        window.location.href = "dt-animal-no.html";
       }
     });
   
