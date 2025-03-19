@@ -11,15 +11,13 @@ import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserService;
 import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Configuration
@@ -33,19 +31,18 @@ public class SecurityConfig {
                 .requestMatchers("/login", "/css/**").permitAll() // Allow public access
                 .requestMatchers("/admin/**").hasAuthority("APPROLE_Admin")
                 .requestMatchers("/researcher/**").hasAuthority("APPROLE_Researcher")
+                .requestMatchers("/api/applications/my").hasAuthority("APPROLE_Researcher")
+                .requestMatchers("/api/applications/submit").hasAuthority("APPROLE_Researcher")
+                .requestMatchers("/api/applications/all").hasAuthority("APPROLE_Admin")
+                .requestMatchers("/api/applications/*/update").hasAuthority("APPROLE_Admin") // Fixed pattern issue
                 .anyRequest().authenticated()
             )
             .oauth2Login(oauth2 -> oauth2
                 .loginPage("/login")
                 .userInfoEndpoint(userInfo -> userInfo.oidcUserService(oidcUserService()))
-                .defaultSuccessUrl("/default", true) // Set a default success URL
+                .defaultSuccessUrl("/default", true)
                 .successHandler((request, response, authentication) -> {
-                    String targetUrl = "/default";
-                    if (authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("APPROLE_Admin"))) {
-                        targetUrl = "/admin";
-                    } else if (authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("APPROLE_Researcher"))) {
-                        targetUrl = "/researcher";
-                    }
+                    String targetUrl = determineTargetUrl(authentication.getAuthorities());
                     response.sendRedirect(targetUrl);
                 })
             )
@@ -60,6 +57,15 @@ public class SecurityConfig {
         return http.build();
     }
 
+    private String determineTargetUrl(Collection<? extends GrantedAuthority> authorities) {
+        if (authorities.stream().anyMatch(a -> a.getAuthority().equals("APPROLE_Admin"))) {
+            return "/admin";
+        } else if (authorities.stream().anyMatch(a -> a.getAuthority().equals("APPROLE_Researcher"))) {
+            return "/researcher";
+        }
+        return "/default";
+    }
+
     @Bean
     public OidcUserService oidcUserService() {
         return new OidcUserService() {
@@ -67,9 +73,12 @@ public class SecurityConfig {
             public OidcUser loadUser(OidcUserRequest userRequest) {
                 OidcUser oidcUser = super.loadUser(userRequest);
 
-                List<String> roles = oidcUser.getClaims().containsKey("roles")
-                        ? (List<String>) oidcUser.getClaims().get("roles")
-                        : List.of();
+                System.out.println("✅ OIDC User Claims: " + oidcUser.getClaims());
+
+                String email = (String) Optional.ofNullable(oidcUser.getAttribute("email")).orElse("Unknown Email");
+
+                List<String> roles = Optional.ofNullable((List<String>) oidcUser.getClaims().get("roles"))
+                        .orElse(List.of());
 
                 Collection<GrantedAuthority> mappedAuthorities = roles.stream()
                         .map(role -> new SimpleGrantedAuthority("APPROLE_" + role))
@@ -80,4 +89,3 @@ public class SecurityConfig {
         };
     }
 }
-
