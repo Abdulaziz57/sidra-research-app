@@ -98,15 +98,35 @@ public class ResearchApplicationController {
      */
     @GetMapping("/all")
     public ResponseEntity<List<ResearchApplication>> getAllApplications(@AuthenticationPrincipal OidcUser oidcUser) {
-        String email = oidcUser.getEmail();
+        if (oidcUser == null) {
+            return ResponseEntity.status(401).build();
+        }
+
+        String email = oidcUser.getAttribute("email"); // Default email claim
+        if (email == null) {
+            email = oidcUser.getAttribute("preferred_username"); // Sometimes it's stored under this key
+        }
+        if (email == null) {
+            email = oidcUser.getAttribute("upn"); // Azure-specific User Principal Name
+        }
+
+        if (email == null) {
+            System.out.println("❌ No email found in OIDC user attributes!");
+            return ResponseEntity.status(400).body(null);
+        }
+
         Optional<User> user = userRepository.findByEmail(email);
 
         if (user.isEmpty() || !user.get().getRole().equals("Admin")) {
+            System.out.println("❌ Unauthorized access by user: " + email);
             return ResponseEntity.status(403).build();
         }
 
-        return ResponseEntity.ok(applicationRepository.findAll());
+        List<ResearchApplication> applications = applicationRepository.findAll();
+        System.out.println("✅ Successfully retrieved all applications by Admin: " + email);
+        return ResponseEntity.ok(applications);
     }
+
 
     /**
      * Allow Admins to update the status of an application.
