@@ -25,12 +25,16 @@
             </nav>
             <form th:action="@{/logout}" method="post" class="signout-item">
                 <button type="submit" class="signout-button">
-                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/28b5f78cd252ed23988571dddd34923a796b877e39696ff79c1a04fbd4a8797b" alt="Sign Out Icon" class="signout-icon">
-                    <span class="signout-text">Sign Out</span>
+                  <img
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/28b5f78cd252ed23988571dddd34923a796b877e39696ff79c1a04fbd4a8797b?placeholderIfAbsent=true&apiKey=80a512e1fc2a422285d8bcb5e67321ec"
+                    alt="Sign Out Icon"
+                    class="signout-icon"
+                  />
+                  <h2 class="signout-text">Sign Out</h2>
                 </button>
-            </form>
+              </form>
         </div>
-
+        
         <div class="main-content">
             <div class="header">
                 <h1>Researchers' Rejected Applications</h1>
@@ -53,5 +57,6 @@
             </div>
         </div>
     </div>
+    <script src="admin-rejected-script.js"></script>
 </body>
 </html>
