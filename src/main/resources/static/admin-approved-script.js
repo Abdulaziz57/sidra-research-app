@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   const { data, error } = await supabase
     .from("research_applications")
-    .select("*");
+    .select("*")
+    .eq("status", "APPROVED");
 
   if (error) {
     console.error("Error fetching approved applications:", error);
@@ -40,4 +41,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     `;
     tableBody.appendChild(row);
   });
+
+  document.getElementById("refresh-btn").addEventListener("click", () => {
+    window.location.reload();
+  });
+  
+
+
 });
