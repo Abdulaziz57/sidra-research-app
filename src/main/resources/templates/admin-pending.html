@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="admin-pending.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div>
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5fe0ae6b079921c01f73a14cf750f2d80a7f98547c676dcb530b01ca135bafd4" alt="Sidra Medicine" class="logo">
+                <p>Sidra Medicine advances healthcare through research and innovation. This portal enables researchers to submit, track, and manage applications efficiently.</p>
+            </div>
+            <nav>
+                <div class="nav-item">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f55cdebbf199b6dae09ddc2a75a07899e51c10fe53a51f65d49f5620117c7126" alt="Dashboard Icon" class="nav-icon">
+                    <span class="nav-text">Dashboard</span>
+                </div>
+                <div class="notifications-item">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/836aa9e844ff5efbe92bd6468ae14f0ebacce8b6e4d142273f60c06469c9bf8f" alt="Notifications Icon" class="notifications-icon">
+                    <span class="notifications-text">Notifications</span>
+                </div>
+            </nav>
+            <form th:action="@{/logout}" method="post" class="signout-item">
+                <button type="submit" class="signout-button">
+                  <img
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/28b5f78cd252ed23988571dddd34923a796b877e39696ff79c1a04fbd4a8797b?placeholderIfAbsent=true&apiKey=80a512e1fc2a422285d8bcb5e67321ec"
+                    alt="Sign Out Icon"
+                    class="signout-icon"
+                  />
+                  <h2 class="signout-text">Sign Out</h2>
+                </button>
+              </form>
+        </div>
+        <div class="sidebar-footer">
+            <button class="back-button">Back</button>
+          </div>
+        <div class="main-content">
+            <div class="header">
+                <h1>Researchers' Pending Applications</h1>
+            </div>
+            <div class="applications-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Applicant Name</th>
+                            <th>Application Title</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="applications-table">
+                        <!-- Data will be inserted here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="admin-pending-script.js"></script>
+</body>
+</html>
