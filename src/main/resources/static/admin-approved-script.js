@@ -1,51 +1,70 @@
-// admin-approved-script.js
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
 const supabaseUrl = 'https://afwwtswpibkgpmnwojtc.supabase.co';
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFmd3d0c3dwaWJrZ3BtbndvanRjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI4ODE4MjMsImV4cCI6MjA1ODQ1NzgyM30.Y5-yeOVZ1YAroX5Y8G3tisCy-DCbvIErZ0hrDixgRNs"
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFmd3d0c3dwaWJrZ3BtbndvanRjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI4ODE4MjMsImV4cCI6MjA1ODQ1NzgyM30.Y5-yeOVZ1YAroX5Y8G3tisCy-DCbvIErZ0hrDixgRNs";
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 document.addEventListener("DOMContentLoaded", async function () {
   const backButton = document.querySelector(".nav-item");
+  backButton.addEventListener("click", () => window.history.back());
 
-  backButton.addEventListener("click", function () {
-    window.history.back();
-  });
+  document.getElementById("refresh-btn").addEventListener("click", () => window.location.reload());
 
   const tableBody = document.getElementById("applications-table");
 
   const { data, error } = await supabase
     .from("research_applications")
-    .select("*")
-    .eq("status", "APPROVED");
+    .select("*");
 
-  if (error) {
-    console.error("Error fetching approved applications:", error);
+  if (error || !data) {
     tableBody.innerHTML = "<tr><td colspan='5'>Error loading data.</td></tr>";
+    console.error("Fetch Error:", error);
     return;
   }
 
-  if (!data || data.length === 0) {
-    tableBody.innerHTML = "<tr><td colspan='5'>No approved applications found.</td></tr>";
+  if (data.length === 0) {
+    tableBody.innerHTML = "<tr><td colspan='5'>No applications found.</td></tr>";
     return;
   }
 
   data.forEach((app) => {
     const row = document.createElement("tr");
+
+    const statusOptions = ["APPROVED", "PENDING", "REJECTED"];
+    const statusDropdown = document.createElement("select");
+    statusDropdown.classList.add("status-dropdown");
+
+    statusOptions.forEach((option) => {
+      const opt = document.createElement("option");
+      opt.value = option;
+      opt.textContent = option;
+      if (app.status === option) opt.selected = true;
+      statusDropdown.appendChild(opt);
+    });
+
+    statusDropdown.addEventListener("change", async () => {
+      const { error: updateError } = await supabase
+        .from("research_applications")
+        .update({ status: statusDropdown.value })
+        .eq("id", app.id);
+
+      if (updateError) {
+        alert("Failed to update status.");
+        console.error(updateError);
+      } else {
+        alert("Status updated.");
+      }
+    });
+
     row.innerHTML = `
       <td>${app.id || "-"}</td>
       <td>${app.applicant_name || "-"}</td>
       <td>${app.title || "-"}</td>
-      <td>${app.status}</td>
+      <td></td>
       <td>${app.submitted_at ? new Date(app.submitted_at).toLocaleString() : "-"}</td>
     `;
+
+    row.children[3].appendChild(statusDropdown);
     tableBody.appendChild(row);
   });
-
-  document.getElementById("refresh-btn").addEventListener("click", () => {
-    window.location.reload();
-  });
-  
-
-
 });

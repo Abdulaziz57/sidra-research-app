@@ -234,4 +234,21 @@ tr:nth-child(even) {
     box-shadow: 0 0 0 3px rgba(3, 98, 105, 0.3);
   }
   
+  .status-dropdown {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  .status-dropdown:focus {
+    outline: none;
+    border-color: #036269;
+    box-shadow: 0 0 0 3px rgba(3, 98, 105, 0.3);
+  }
   
