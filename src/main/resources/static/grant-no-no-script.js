@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Here you would implement actual navigation logic
       // For demonstration, we'll just alert
       //alert("Going back to previous step");
+      localStorage.setItem("grant-no-no-selection", null);
       window.location.href = "grant-no-path.html";
     });
   
@@ -106,10 +107,13 @@ document.addEventListener("DOMContentLoaded", function () {
       if (selectedOption === "yes") {
         //alert("Proceeding to animal study path...");
         // Here you would navigate to the next step or show additional fields
+        localStorage.setItem("grant-no-no-selection", "yes");
+
         window.location.href = "dt-animal-yes.html";
       } else {
         //alert("Proceeding to non-animal study path...");
         // Here you would navigate to the alternative path
+        localStorage.setItem("grant-no-no-selection", "no");
         window.location.href = "dt-animal-no.html";
       }
     });

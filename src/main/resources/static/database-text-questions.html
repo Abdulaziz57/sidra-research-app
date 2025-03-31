@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sidra Medicine - Study Details</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="database-text-questions-styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="logo">
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/fec6d81e4e6a05c3f7bfe9354ad525985702ab7a"
+          alt="Sidra Medicine Logo"
+          class="logo-img"
+        />
+      </header>
+
+      <section class="question-container">
+        <h1 class="question">Please answer the following questions:</h1>
+
+        <div class="options">
+          <div class="option">
+            <label class="label" for="question1">1. What is the primary goal of your research?</label>
+          </div>
+          <textarea id="question1" class="text-input" rows="4" placeholder="Type your answer here..."></textarea>
+
+          <div class="option" style="margin-top: 20px;">
+            <label class="label" for="question2">2. How will participants be recruited for this study?</label>
+          </div>
+          <textarea id="question2" class="text-input" rows="4" placeholder="Type your answer here..."></textarea>
+
+          <div class="option" style="margin-top: 20px;">
+            <label class="label" for="question3">3. What are the anticipated benefits of the study?</label>
+          </div>
+          <textarea id="question3" class="text-input" rows="4" placeholder="Type your answer here..."></textarea>
+        </div>
+
+        <div class="button-container">
+          <button type="button" class="back-button" id="backButton">Back</button>
+          <button type="button" class="continue-button" id="submitButton">Continue</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="database-text-questions-script.js"></script>
+  </body>
+</html>

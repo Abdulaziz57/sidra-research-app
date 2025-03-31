@@ -11,9 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const destinations = {
     option1: dir + "/wrongDepartmentPage-path" + ".html",
     option2: dir +  "/wrongDepartmentPage-path" + ".html",
-    option3: dir + "/grant-question" + ".html",
-    option4: dir + "/grant-question" + ".html",
-    option5: dir + "/grant-question" + ".html",
+    option3: dir + "/database-text-questions" + ".html",
+    option4: dir + "/database-text-questions" + ".html",
+    option5: dir + "/database-text-questions" + ".html",
     option6: dir +  "/wrongDepartmentPage-path" + ".html",
     option7: dir +  "/wrongDepartmentPage-path" + ".html",
   };
@@ -28,6 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Store the selected option ID
       selectedOption = this.id;
+      localStorage.setItem("dt-question-selection", selectedOption);
+
     });
   });
 
@@ -55,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (backButton) {
     backButton.addEventListener("click", function () {
       // Go back to the previous page
+      localStorage.setItem("dt-question-selection", null);
       window.location.href = dir + "/researcher";
     });
   }
