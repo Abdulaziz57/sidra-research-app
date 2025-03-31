@@ -201,5 +201,54 @@ tr:nth-child(even) {
     height: 24px;
   }
   
-
+/* Top-right refresh button container */
+  .refresh-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;           /* Moves it slightly down */
+    margin-bottom: 20px;
+    padding-left: 800px;        /* Moves it further right */
+  }
+  
+  
+  /* Refresh button (same style as back button) */
+  .refresh-button {
+    background-color: #036269;
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .refresh-button:hover {
+    background-color: #024b50;
+  }
+  
+  .refresh-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(3, 98, 105, 0.3);
+  }
+  
+  .status-dropdown {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  .status-dropdown:focus {
+    outline: none;
+    border-color: #036269;
+    box-shadow: 0 0 0 3px rgba(3, 98, 105, 0.3);
+  }
   

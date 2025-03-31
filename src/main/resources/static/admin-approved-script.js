@@ -7,64 +7,79 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 document.addEventListener("DOMContentLoaded", async function () {
   const backButton = document.querySelector(".nav-item");
   backButton.addEventListener("click", () => window.history.back());
-
   document.getElementById("refresh-btn").addEventListener("click", () => window.location.reload());
 
+  const tableHeader = document.getElementById("applications-header");
   const tableBody = document.getElementById("applications-table");
 
-  const { data, error } = await supabase
-    .from("research_applications")
-    .select("*");
+  const { data, error } = await supabase.from("research_applications").select("*").eq("status", "APPROVED");
 
   if (error || !data) {
-    tableBody.innerHTML = "<tr><td colspan='5'>Error loading data.</td></tr>";
+    tableBody.innerHTML = "<tr><td colspan='100%'>Error loading data.</td></tr>";
     console.error("Fetch Error:", error);
     return;
   }
 
   if (data.length === 0) {
-    tableBody.innerHTML = "<tr><td colspan='5'>No applications found.</td></tr>";
+    tableBody.innerHTML = "<tr><td colspan='100%'>No applications found.</td></tr>";
     return;
   }
 
+  // Dynamically generate headers
+  const keys = Object.keys(data[0]);
+  const headerRow = document.createElement("tr");
+  keys.forEach(key => {
+    const th = document.createElement("th");
+    th.textContent = key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, " ");
+    headerRow.appendChild(th);
+  });
+  tableHeader.appendChild(headerRow);
+
+  // Rows
   data.forEach((app) => {
     const row = document.createElement("tr");
 
-    const statusOptions = ["APPROVED", "PENDING", "REJECTED"];
-    const statusDropdown = document.createElement("select");
-    statusDropdown.classList.add("status-dropdown");
+    keys.forEach(key => {
+      const cell = document.createElement("td");
 
-    statusOptions.forEach((option) => {
-      const opt = document.createElement("option");
-      opt.value = option;
-      opt.textContent = option;
-      if (app.status === option) opt.selected = true;
-      statusDropdown.appendChild(opt);
-    });
+      if (key === "status") {
+        const statusOptions = ["APPROVED", "PENDING", "REJECTED"];
+        const dropdown = document.createElement("select");
+        dropdown.classList.add("status-dropdown");
 
-    statusDropdown.addEventListener("change", async () => {
-      const { error: updateError } = await supabase
-        .from("research_applications")
-        .update({ status: statusDropdown.value })
-        .eq("id", app.id);
+        statusOptions.forEach((opt) => {
+          const option = document.createElement("option");
+          option.value = opt;
+          option.textContent = opt;
+          if (app.status === opt) option.selected = true;
+          dropdown.appendChild(option);
+        });
 
-      if (updateError) {
-        alert("Failed to update status.");
-        console.error(updateError);
+        dropdown.addEventListener("change", async () => {
+          const { error: updateError } = await supabase
+            .from("research_applications")
+            .update({ status: dropdown.value })
+            .eq("id", app.id);
+
+          if (updateError) {
+            alert("Failed to update status.");
+            console.error(updateError);
+          } else {
+            alert("Status updated.");
+          }
+        });
+
+        cell.appendChild(dropdown);
       } else {
-        alert("Status updated.");
+        const value = app[key];
+        cell.textContent = value instanceof Date
+          ? new Date(value).toLocaleString()
+          : value || "-";
       }
+
+      row.appendChild(cell);
     });
 
-    row.innerHTML = `
-      <td>${app.id || "-"}</td>
-      <td>${app.applicant_name || "-"}</td>
-      <td>${app.title || "-"}</td>
-      <td></td>
-      <td>${app.submitted_at ? new Date(app.submitted_at).toLocaleString() : "-"}</td>
-    `;
-
-    row.children[3].appendChild(statusDropdown);
     tableBody.appendChild(row);
   });
 });

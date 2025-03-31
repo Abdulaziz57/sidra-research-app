@@ -12,13 +12,13 @@ document.addEventListener("DOMContentLoaded", function () {
   
     if (rejectedCard) {
       rejectedCard.addEventListener("click", function () {
-        window.location.href = "admin-rejected.html";
+        window.location.href = "/admin-rejected.html";
       });
     }
   
     if (pendingCard) {
       pendingCard.addEventListener("click", function () {
-        window.location.href = "admin-pending.html";
+        window.location.href = "/admin-pending.html";
       });
     }
   });
