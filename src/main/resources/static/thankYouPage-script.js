@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
       Department: localStorage.getItem("Department") || allData.question3,
       submitted_at: new Date().toISOString(),
     };
-    console.log("New Record:", newRecord);
 
     // 📤 Insert to Supabase
     const { data, error } = await supabase
