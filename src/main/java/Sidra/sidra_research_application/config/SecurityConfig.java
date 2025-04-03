@@ -23,6 +23,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+            .csrf(csrf -> csrf.ignoringRequestMatchers("/logout"))
             .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/login", "/css/**").permitAll()
                 .requestMatchers("/admin/**").hasAuthority("APPROLE_Admin")
@@ -30,10 +31,10 @@ public class SecurityConfig {
                 .anyRequest().authenticated()
             )
             .oauth2Login(oauth2 -> oauth2
-                .loginPage("/login") 
+                .loginPage("/login")
                 .userInfoEndpoint(userInfo -> userInfo.oidcUserService(oidcUserService()))
                 .successHandler((request, response, authentication) -> {
-                    String targetUrl = "/login";;
+                    String targetUrl = "/login";
                     if (authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("APPROLE_Admin"))) {
                         targetUrl = "/admin";
                     } else if (authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("APPROLE_Researcher"))) {
@@ -42,14 +43,13 @@ public class SecurityConfig {
                     response.sendRedirect(targetUrl);
                 })
             )
-
             .logout(logout -> logout
-            .logoutUrl("/logout")
-            .logoutSuccessUrl("https://login.microsoftonline.com/common/oauth2/logout?post_logout_redirect_uri=http://localhost:9191/")
-            .invalidateHttpSession(true)
-            .clearAuthentication(true)
-            .deleteCookies("JSESSIONID")
-        );
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("https://login.microsoftonline.com/common/oauth2/logout?post_logout_redirect_uri=http://localhost:9191/")
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .deleteCookies("JSESSIONID")
+            );
 
         return http.build();
     }

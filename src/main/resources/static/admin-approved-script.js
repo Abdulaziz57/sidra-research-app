@@ -5,8 +5,10 @@ const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 document.addEventListener("DOMContentLoaded", async function () {
-  const backButton = document.querySelector(".nav-item");
-  backButton.addEventListener("click", () => window.history.back());
+  const backButton = document.querySelector(".back-button");
+  if (backButton) {
+    backButton.addEventListener("click", () => window.history.back());
+  }
   document.getElementById("refresh-btn").addEventListener("click", () => window.location.reload());
 
   const tableHeader = document.getElementById("applications-header");

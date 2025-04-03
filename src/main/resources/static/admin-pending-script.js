@@ -5,14 +5,20 @@ const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 document.addEventListener("DOMContentLoaded", async function () {
-  const backButton = document.querySelector(".nav-item");
-  backButton.addEventListener("click", () => window.history.back());
+  const backButton = document.querySelector(".back-button");
+  if (backButton) {
+    backButton.addEventListener("click", () => window.history.back());
+  }
+
   document.getElementById("refresh-btn").addEventListener("click", () => window.location.reload());
 
   const tableHeader = document.getElementById("applications-header");
   const tableBody = document.getElementById("applications-table");
 
-  const { data, error } = await supabase.from("research_applications").select("*").eq("status", "PENDING");
+  const { data, error } = await supabase
+    .from("research_applications")
+    .select("*")
+    .eq("status", "PENDING");
 
   if (error || !data) {
     tableBody.innerHTML = "<tr><td colspan='100%'>Error loading data.</td></tr>";
@@ -25,10 +31,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     return;
   }
 
-  // Dynamically generate headers
+  // Headers
   const keys = Object.keys(data[0]);
   const headerRow = document.createElement("tr");
-  keys.forEach(key => {
+  keys.forEach((key) => {
     const th = document.createElement("th");
     th.textContent = key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, " ");
     headerRow.appendChild(th);
@@ -38,16 +44,14 @@ document.addEventListener("DOMContentLoaded", async function () {
   // Rows
   data.forEach((app) => {
     const row = document.createElement("tr");
-
-    keys.forEach(key => {
+    keys.forEach((key) => {
       const cell = document.createElement("td");
 
       if (key === "status") {
-        const statusOptions = ["APPROVED", "PENDING", "REJECTED"];
         const dropdown = document.createElement("select");
         dropdown.classList.add("status-dropdown");
 
-        statusOptions.forEach((opt) => {
+        ["APPROVED", "PENDING", "REJECTED"].forEach((opt) => {
           const option = document.createElement("option");
           option.value = opt;
           option.textContent = opt;
@@ -71,15 +75,11 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         cell.appendChild(dropdown);
       } else {
-        const value = app[key];
-        cell.textContent = value instanceof Date
-          ? new Date(value).toLocaleString()
-          : value || "-";
+        cell.textContent = app[key] ?? "-";
       }
 
       row.appendChild(cell);
     });
-
     tableBody.appendChild(row);
   });
 });
