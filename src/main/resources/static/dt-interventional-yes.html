@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sidra Medicine - Grants Application</title>
+    <title>Sidra Medicine - Interventional Application</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
@@ -23,33 +23,41 @@
       />
 
       <section class="content">
-        <h1 class="title">Please refer to the Clinical Trails Office (CTO) office at clinicaltrialsoffice@sidra.org</h1>
-        <h2 class="subtitle">To proceed with your application:</h2>
+        <h1 class="title">Please refer to the Clinical Trials Office</h1>
+        <h2 class="subtitle">
+          Email: <span style="font-style: italic;">clinicaltrialsoffice@sidra.org</span><br />
+          To proceed with your application:
+        </h2>
 
-        <div class="instructions">
-          <p class="instruction">
-            1. Download and fill the
-            <a href="#" class="link">application form document (Appendix 4)</a>.
-          </p>
-          <p class="instruction">
-            2. Download and fill the
-            <a href="#" class="link">general form document</a>.
-          </p>
-          <p class="instruction">
-            3. Upload both documents in the following Dropbox.
-          </p>
-        </div>
+        <ol class="instructions">
+          <li>
+            Download and complete the
+            <a href="appendices/APPENDIX.4.docx" class="link" download>
+              application form document (Appendix 4)
+            </a>.
+          </li>
+          <li>
+            Download and complete the
+            <a href="appendices/GENERAL_FORM.docx" class="link" download>
+              general form document
+            </a>.
+          </li>
+          <li>Upload both documents below.</li>
+        </ol>
 
-        <div class="upload-box">
-          <p class="upload-text">⬆ Upload Documents</p>
+        <label for="fileUpload" class="upload-box">
+          <span class="upload-icon ti ti-upload"></span>
+          <span class="upload-text">Click to Upload or Drag & Drop Files</span>
           <input type="file" id="fileUpload" class="file-input" multiple />
+        </label>
+
+        <div class="file-list" id="file-list"></div>
+
+        <div class="button-container">
+          <button type="button" class="back-button">Back</button>
+          <button type="submit" class="submit-button">Submit</button>
         </div>
       </section>
-
-      <div class="button-container">
-        <button type="button" class="back-button">Back</button>
-        <button type="button" class="submit-button">Submit</button>
-      </div>
     </main>
 
     <script src="dt-interventional-yes-script.js"></script>
