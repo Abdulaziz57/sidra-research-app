@@ -1,233 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Researcher Dashboard</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-        body {
-            background-color: #f3f4f6;
-            display: flex;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-        .sidebar {
-            width: 300px;
-            background: white;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            border-right: 2px solid #a2a4a8;
-            position: fixed;
-            height: 100vh;
-            align-items: center;
-            text-align: center;
-        }
-        .sidebar img {
-            width: 100%;
-            max-width: 250px;
-            height: auto;
-            display: block;
-        }
-        .sidebar p {
-            margin-top: 15px;
-            color: #666;
-            font-size: 14px;
-            text-align: justify;
-        }
-
-        .main-content {
-            margin-left: 320px;
-            flex: 1;
-            padding: 30px;
-            width: calc(100% - 320px);
-            max-width: 1200px;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .header h1 {
-            font-size: 28px;
-        }
-        .button {
-            background-color: #0a7355;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        .welcome-box {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-            font-size: 16px;
-        }
-        .applications {
-            margin-top: 20px;
-        }
-        .app-card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            width: 100%;
-            max-width: 600px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 16px;
-        }
-        .status {
-            padding: 6px 12px;
-            border-radius: 5px;
-            font-size: 14px;
-            white-space: nowrap;
-        }
-        .pending {
-            background: #fbe9a5;
-            color: #8a6d3b;
-        }
-        .approved {
-            background: #c8e6c9;
-            color: #2e7d32;
-        }
-        .rejected {
-            background: #ffccbc;
-            color: #c62828;
-        }
-        .signout-icon {
-            width: 20px;
-            height: 20px;
-        }
-        .signout-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-top: auto;
-            color: #c00f0c;
-            font-size: 1.2rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .signout-button {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: #c00f0c;
-            font-size: 1rem;
-            font-weight: 600;
-            width: 100%;
-            text-align: left;
-            padding: 0.8rem;
-            }
-
-        .signout-button:hover {
-            opacity: 0.8;
-        }
-
-        @media (max-width: 991px) {
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                padding-bottom: 20px;
-            }
-            .main-content {
-                margin-left: 0;
-                width: 100%;
-                padding: 20px;
-            }
-            .header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .button {
-                margin-top: 10px;
-                width: 100%;
-            }
-            .app-card {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Researcher Dashboard</title>
+  <link rel="stylesheet" href="researcherPage.css" />
 </head>
 <body>
-    <div class="sidebar">
-        <div>
-            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5fe0ae6b079921c01f73a14cf750f2d80a7f98547c676dcb530b01ca135bafd4" alt="Sidra Medicine">
-            <p>Sidra Medicine advances healthcare through research and innovation. This portal enables researchers to submit, track, and manage applications efficiently.</p>
-        </div>
-        <form th:action="@{/logout}" method="post" class="signout-item">
-            <button type="submit" class="signout-button">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/28b5f78cd252ed23988571dddd34923a796b877e39696ff79c1a04fbd4a8797b?placeholderIfAbsent=true&apiKey=80a512e1fc2a422285d8bcb5e67321ec"
-                alt="Sign Out Icon"
-                class="signout-icon"
-              />
-              <h2 class="signout-text">Sign Out</h2>
-            </button>
-        </form>
-
+  <div class="sidebar">
+    <div>
+      <img
+        src="https://cdn.builder.io/api/v1/image/assets/TEMP/5fe0ae6b079921c01f73a14cf750f2d80a7f98547c676dcb530b01ca135bafd4"
+        alt="Sidra Medicine"
+      />
+      <p>
+        Sidra Medicine advances healthcare through research and innovation. This portal enables researchers to submit, track, and manage applications efficiently.
+      </p>
     </div>
 
-    <div class="main-content">
-        <div class="header">
-            <h1>Researcher Dashboard</h1>
-            <button class="button" id="startApplication">+ Start New Application</button>
-        </div>
-    
-    
-    <script>
-        document.getElementById("startApplication").addEventListener("click", function() {
-            window.location.href = "/decisionTree.html"; // This calls the Spring Boot route
-        });
-    </script>
-        <div class="welcome-box">
-            <h3>Welcome to your Dashboard</h3>
-            <p>You will find all your Rejected, Pending, and Approved applications here.</p>
-        </div>
+    <form th:action="@{/logout}" method="post">
+      <button type="submit" class="signout-button">
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/28b5f78cd252ed23988571dddd34923a796b877e39696ff79c1a04fbd4a8797b"
+          alt="Sign Out Icon"
+          class="signout-icon"
+        />
+        <span>Sign Out</span>
+      </button>
+    </form>
+  </div>
 
-        <div class="applications">
-            <div class="app-card">
-                <div>
-                    <h4>Cancer Research Study</h4>
-                    <p>Submitted on: 2025-01-15</p>
-                </div>
-                <span class="status pending">Pending</span>
-            </div>
-            <div class="app-card">
-                <div>
-                    <h4>Cardiovascular Health Analysis</h4>
-                    <p>Submitted on: 2025-02-12</p>
-                </div>
-                <span class="status approved">Approved</span>
-            </div>
-            <div class="app-card">
-                <div>
-                    <h4>Cancer Research Study</h4>
-                    <p>Submitted on: 2023-05-15</p>
-                </div>
-                <span class="status rejected">Rejected</span>
-            </div>
-        </div>
+  <div class="main-content">
+    <div class="header">
+      <h1>Researcher Dashboard</h1>
+      <button class="button" id="start-application">+ Start New Application</button>
     </div>
+
+    <div class="welcome-box">
+      <h3>Welcome to your Dashboard</h3>
+      <p>You will find all your applications and statuses in the table below.</p>
+    </div>
+
+    <div class="applications-table-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Project Name</th>
+            <th>Date Submitted</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="application-rows">
+          <!-- Example static rows -->
+          <tr>
+            <td>Cancer Research Study</td>
+            <td>2025-01-15</td>
+            <td><span class="status pending">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Cardiovascular Health Analysis</td>
+            <td>2025-02-12</td>
+            <td><span class="status approved">Approved</span></td>
+          </tr>
+          <tr>
+            <td>Obesity Risk Factors</td>
+            <td>2024-11-04</td>
+            <td><span class="status rejected">Rejected</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="researcher-dashboard.js"></script>
 </body>
 </html>
