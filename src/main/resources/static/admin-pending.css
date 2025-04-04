@@ -47,7 +47,6 @@ body {
   background-color: #024b50;
 }
 
-/* Green Title Container */
 .green-title-box {
   width: 50%;
   background-color: #036269;
@@ -86,6 +85,9 @@ td {
   font-size: 14px;
   text-align: left;
   vertical-align: middle;
+  border: 1px solid #ddd;
+  word-break: break-word;
+  white-space: normal;
 }
 
 th {
@@ -100,6 +102,11 @@ td {
   border-top: 1px solid #eaeaea;
 }
 
+td:nth-child(1) {
+  white-space: nowrap;
+  word-break: normal;
+}
+
 tr:nth-child(even) td {
   background-color: #f9fafa;
 }
@@ -108,7 +115,6 @@ tr:hover td {
   background-color: inherit;
 }
 
-/* Status dropdown */
 .status-dropdown {
   font-family: "Inter", sans-serif;
   font-size: 14px;
@@ -126,7 +132,6 @@ tr:hover td {
   box-shadow: 0 0 0 3px rgba(3, 98, 105, 0.3);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .action-bar {
     flex-direction: column;

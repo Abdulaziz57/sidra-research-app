@@ -6,8 +6,44 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 let submissionSuccessful = false;
 
+async function getUserEmailFromBackend() {
+  try {
+    const response = await fetch("/api/user/email");
+    if (!response.ok) throw new Error("Could not retrieve user info.");
+
+    const result = await response.json();
+    if (!result.email) throw new Error("User email not found.");
+
+    return result.email;
+  } catch (err) {
+    alert("⚠️ Error: " + err.message + " Please log in again.");
+    throw err;
+  }
+}
+
+
+
 document.addEventListener("DOMContentLoaded", async function () {
+
+
+async function getUserEmailFromBackend() {
+  try {
+    const response = await fetch("/api/user/email");
+    if (!response.ok) throw new Error("Could not retrieve user info.");
+
+    const result = await response.json();
+    if (!result.email) throw new Error("User email not found.");
+
+    return result.email;
+  } catch (err) {
+    alert("⚠️ Error: " + err.message + " Please log in again.");
+    throw err;
+  }
+}
+
   const homeButton = document.getElementById("home-button");
+
+
 
   // Collect all form-related data from localStorage
   const allData = {
@@ -23,23 +59,27 @@ document.addEventListener("DOMContentLoaded", async function () {
   };
 
   // Build decisionFlow string
-  const decisionFlow = 
+  const decisionFlow =
     `DT: ${allData.dt} --> ` +
     `Grant: ${allData.grant} --> ` +
     `GrantNo: ${allData.grantNo} --> ` +
     `GrantNoYes: ${allData.grantNoYes} --> ` +
     `GrantNoNo: ${allData.grantNoNo}`;
 
-  // Construct the record
-  const newRecord = {
-    status: "PENDING",
-    user_email: localStorage.getItem("user_email") || "test@example.com",
-    LPI_name: localStorage.getItem("LPI_name") || allData.question1,
-    Project_name: localStorage.getItem("Project_name") || allData.question2,
-    Project_type: localStorage.getItem("Project_type") || decisionFlow,
-    Department: localStorage.getItem("Department") || allData.question3,
-    submitted_at: new Date().toISOString(),
-  };
+
+    const email = await getUserEmailFromBackend();
+
+
+    // Construct the record
+    const newRecord = {
+      status: "PENDING",
+      user_email: email,
+      LPI_name: localStorage.getItem("LPI_name") || allData.question1,
+      Project_name: localStorage.getItem("Project_name") || allData.question2,
+      Project_type: localStorage.getItem("Project_type") || decisionFlow,
+      Department: localStorage.getItem("Department") || allData.question3,
+      submitted_at: new Date().toISOString(),
+    };
 
   // Attempt to insert the record
   const { data, error } = await supabase

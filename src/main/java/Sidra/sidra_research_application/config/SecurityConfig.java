@@ -28,6 +28,7 @@ public class SecurityConfig {
                 .requestMatchers("/login", "/css/**").permitAll()
                 .requestMatchers("/admin/**").hasAuthority("APPROLE_Admin")
                 .requestMatchers("/researcher/**").hasAuthority("APPROLE_Researcher")
+                .requestMatchers("/api/user/email").authenticated()
                 .anyRequest().authenticated()
             )
             .oauth2Login(oauth2 -> oauth2
