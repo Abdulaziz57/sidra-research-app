@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Example: Navigate back to previous page
       console.log("Back button clicked");
       //alert("Going back to previous page");
+      localStorage.setItem("grant-no-yes-selection", null);
       window.location.href = "grant-no-path.html";
     }
   
@@ -95,11 +96,14 @@ document.addEventListener("DOMContentLoaded", function () {
       // Navigate based on selection
       if (selectedOption === "yes") {
         console.log("Navigating to YES path");
+        localStorage.setItem("grant-no-yes-selection", "yes");
+
         //alert("You selected YES - navigating to the YES path");
         window.location.href = "dt-interventional-yes.html"; // Uncomment and update with actual path
       } else if (selectedOption === "no") {
         console.log("Navigating to NO path");
         //alert("You selected NO - navigating to the NO path");
+        localStorage.setItem("grant-no-yes-selection", "no");
         window.location.href = "dt-interventional-no.html"; // Uncomment and update with actual path
       }
     }

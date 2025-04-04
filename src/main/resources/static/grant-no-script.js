@@ -48,16 +48,19 @@ document.addEventListener("DOMContentLoaded", function () {
         // Navigate to the "Yes" destination
         //alert("Navigating to Human-Subject Research path");
         // In a real implementation, you would use:
+        localStorage.setItem("grant-no-selection", "yes");
         window.location.href = dir+"/grant-no-yes-path.html";
       } else if (noCheckbox.checked) {
         // Navigate to the "No" destination
         //alert("Navigating to Non-Human-Subject Research path");
         // In a real implementation, you would use:
+        localStorage.setItem("grant-no-selection", "no");
         window.location.href = dir+"/grant-no-no-path.html";
       } else if (notSureCheckbox.checked) {
         // Navigate to the "Not Sure" destination
         //alert("Navigating to Information/Help page");
         // In a real implementation, you would use:
+        localStorage.setItem("grant-no-selection", "not-sure");
         window.location.href = dir+"/grant-no-notSure-path.html";
       }
     });
@@ -67,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Navigate back
       //alert("Going back to previous page");
       // In a real implementation, you would use:
+      localStorage.setItem("grant-no-selection", null);
       window.location.href = dir+"/grant-question.html";
     });
   });

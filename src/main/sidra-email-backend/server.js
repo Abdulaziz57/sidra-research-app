@@ -6,7 +6,7 @@ const cors = require("cors");
 const fs = require("fs");
 
 const app = express();
-const PORT = 5000;
+const PORT = 5050;
 
 // Middleware
 app.use(cors());
@@ -39,7 +39,7 @@ app.post("/upload", upload.array("files"), async (req, res) => {
 
     const mailOptions = {
       from: process.env.EMAIL,
-      to: "researchpmo@sidra.org", // Replace with the actual recipient email
+      to: "1rAAAesearchpmo@sidra.org", // Replace with the actual recipient email
       subject: "New Grant Application Submission",
       text: "Attached are the submitted grant application documents.",
       attachments: attachments,

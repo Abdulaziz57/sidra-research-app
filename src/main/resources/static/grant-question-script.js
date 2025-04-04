@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (selectedCheckbox.checked) {
         // Uncheck the other checkbox
         otherCheckbox.checked = false;
+        
         // Show the continue button
         continueButton.style.display = "block";
       } else {
@@ -37,11 +38,13 @@ document.addEventListener("DOMContentLoaded", function () {
         // Navigate to the "Yes" destination
         //alert("Navigating to Grant Submission Research Study path");
         // In a real implementation, you would use:
+        localStorage.setItem("grant-question-selection", "yes");
         window.location.href = dir+"/grant-yes-path.html";
       } else if (noCheckbox.checked) {
         // Navigate to the "No" destination
         //alert("Navigating to Non-Grant Research Study path");
         // In a real implementation, you would use:
+        localStorage.setItem("grant-question-selection", "no");
         window.location.href = dir+"/grant-no-path.html";
       }
     });
@@ -51,7 +54,8 @@ document.addEventListener("DOMContentLoaded", function () {
       // Navigate back
       //alert("Going back to previous page");
       // In a real implementation, you would use:
-      window.location.href = dir+"/decisionTree.html";
+      localStorage.setItem("grant-question-selection", null);
+      window.location.href = dir+"/database-text-questions.html";
     });
   });
   
