@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="admin-approved.css" />
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.5/+esm"></script>
+</head>
+<body>
+  <div class="main-content">
+
+    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5fe0ae6b079921c01f73a14cf750f2d80a7f98547c676dcb530b01ca135bafd4" alt="Sidra Medicine Logo" class="sidra-logo" />
+
+
+    <h1 class="page-title">Researchers' Approved Applications</h1>
+
+    <div class="action-bar">
+      <button class="back-button">&#8592; Back</button>
+      <button class="refresh-button" id="refresh-btn">&#x21bb; Refresh</button>
+    </div>
+
+    <div class="applications-container">
+      <table>
+        <thead id="applications-header"></thead>
+        <tbody id="applications-table"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script type="module" src="admin-all-script.js"></script>
+</body>
+</html>
