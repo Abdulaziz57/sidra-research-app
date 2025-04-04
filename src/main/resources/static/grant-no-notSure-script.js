@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       try {
         // Send files to backend for processing
-        const response = await fetch("http://localhost:5000/upload", {
+        const response = await fetch("http://localhost:5050/upload", {
           method: "POST",
           body: formData,
         });

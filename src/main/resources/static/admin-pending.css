@@ -67,13 +67,23 @@ body {
     padding: 12px;
     border: 1px solid #ddd;
     text-align: left;
+    word-break: break-word;
+    white-space: normal;
   }
+
+
 
   th {
     background-color: #005F73;
     color: white;
     font-size: 14px;
   }
+
+  td:nth-child(1) {
+    white-space: nowrap;
+    word-break: normal;
+  }
+
 
   tr:nth-child(even) {
     background-color: #f2f2f2;
