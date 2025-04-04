@@ -1,251 +1,179 @@
+/* IRB Page Full Stylesheet - Matching Grant Page Styles */
+
 /* Base styles */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: "Inter", sans-serif;
-    background-color: #f5f5f5;
-    display: flex;
-    justify-content: center;
-    min-height: 100vh;
-  }
-  
-  /* Container */
-  .container {
-    background: #f3f4f6;
-    padding: 20px;
-    font-family: "Inter", sans-serif;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-  }
-  
-  /* Logo */
-  .logo {
-    width: 200px;
-    height: auto;
-    margin-bottom: 40px;
-  }
-  
-  /* Main content */
-  .main-content {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  /* Typography */
-  .title {
-    font-size: 24px;
-    font-weight: 500;
-    color: #000;
-    line-height: 1.3;
-  }
-  
-  .subtitle {
-    font-size: 18px;
-    font-style: italic;
-    color: rgba(0, 128, 128, 0.96);
-  }
-  
-  .instructions-title {
-    font-size: 20px;
-    font-weight: 700;
-    color: #000;
-    margin-top: 20px;
-  }
-  
-  .instructions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .instruction-text {
-    font-size: 18px;
-    color: #000;
-  }
-  
-  .instruction-link {
-    color: #0a50b3;
-    text-decoration: underline;
-  }
-  
-  /* Upload box */
-  .upload-box {
-    border: 3px dashed #878787;
-    background: #fff;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    position: relative;
-    transition: background-color 0.2s ease;
-  }
-  
-  .upload-box:hover {
-    background-color: #f9f9f9;
-  }
-  
-  .upload-icon {
-    font-size: 24px;
-    color: rgba(0, 0, 0, 0.27);
-  }
-  
-  .upload-text {
-    font-size: 18px;
-    color: rgba(0, 0, 0, 0.27);
-  }
-  
-  .file-input {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer;
-  }
-  
-  /* File list */
-  .file-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 15px;
-  }
-  
-  .file-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #fff;
-    padding: 10px 15px;
-    border-radius: 4px;
-    border: 1px solid #e0e0e0;
-  }
-  
-  .file-name {
-    font-size: 16px;
-    color: #333;
-  }
-  
-  .file-remove {
-    color: #ff4d4f;
-    cursor: pointer;
-    font-size: 18px;
-    background: none;
-    border: none;
-  }
-  .file-list {
-    margin-top: 10px;
-  }
-  
-  .file-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #f1f1f1;
-    padding: 5px 10px;
-    margin-bottom: 5px;
-    border-radius: 5px;
-  }
-  
-  .remove-file {
-    background: red;
-    color: white;
-    border: none;
-    padding: 2px 6px;
-    border-radius: 50%;
-    cursor: pointer;
-    margin-left: 10px;
-  }
-  
-  /* Button container */
-  .button-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 40px;
-  }
-  
-  /* Buttons */
-  .back-btn,
-  .submit-btn {
-    background: #036269;
-    color: #fff;
-    border: none;
-    border-radius: 20px;
-    padding: 15px 60px;
-    font-size: 18px;
-    font-weight: 700;
-    cursor: pointer;
-    transition:
-      background-color 0.2s ease,
-      transform 0.1s ease;
-  }
-  
-  .back-btn:hover,
-  .submit-btn:hover {
-    background: #024b50;
-  }
-  
-  .back-btn:active,
-  .submit-btn:active {
-    transform: scale(0.98);
-  }
-  
-  /* Responsive styles */
-  @media (max-width: 991px) {
-    .title {
-      font-size: 20px;
-    }
-  
-    .subtitle,
-    .instruction-text,
-    .upload-text {
-      font-size: 16px;
-    }
-  
-    .back-btn,
-    .submit-btn {
-      padding: 12px 40px;
-    }
-  }
-  
-  @media (max-width: 767px) {
-    .container {
-      padding: 15px;
-    }
-  
-    .logo {
-      width: 150px;
-    }
-  
-    .title {
-      font-size: 18px;
-    }
-  
-    .subtitle,
-    .instruction-text,
-    .upload-text {
-      font-size: 14px;
-    }
-  
-    .button-container {
-      flex-direction: column;
-      gap: 15px;
-    }
-  
-    .back-btn,
-    .submit-btn {
-      width: 100%;
-      padding: 10px 20px;
-    }
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f3f4f6;
+  color: #222;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* Main container */
+.container {
+  padding: 100px 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* Logo */
+.logo {
+  width: 300px;
+  height: auto;
+  margin-bottom: 1.5rem;
+}
+
+/* Content section */
+.content {
+  width: 100%;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+}
+
+/* Titles */
+.title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0.75rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+  font-weight: 500;
+  font-style: italic;
+  color: #036c65;
+  margin-bottom: 1.5rem;
+}
+
+/* Instruction list */
+.instructions {
+  font-size: 1rem;
+  margin-left: 1.5rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+/* Links */
+.link {
+  color: #0a50b3;
+  text-decoration: underline;
+}
+
+/* Upload box */
+.upload-box {
+  border: 2px dashed #ccc;
+  background-color: #fafafa;
+  padding: 1.5rem;
+  border-radius: 12px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.3s ease;
+}
+
+.upload-box:hover {
+  border-color: #036269;
+}
+
+.upload-icon {
+  font-size: 2rem;
+  color: #999;
+  margin-bottom: 0.5rem;
+}
+
+.upload-text {
+  color: #888;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.file-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* File list */
+.file-list {
+  list-style: none;
+  margin-top: 1rem;
+  padding: 0;
+  width: 100%;
+  max-width: 800px;
+}
+
+.file-item {
+  background: #f1f1f1;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.file-name {
+  word-break: break-all;
+}
+
+.remove-file {
+  background: crimson;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  padding: 0 8px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+/* Button container */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+.back-button,
+.submit-button {
+  background: #036269;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover,
+.submit-button:hover {
+  background-color: #024b50;
+}
+
+.back-button:focus,
+.submit-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(3, 98, 105, 0.3);
+}
+
+

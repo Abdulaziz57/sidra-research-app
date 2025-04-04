@@ -114,7 +114,7 @@ body {
 .button-container {
   display: flex;
   justify-content: center;
-  gap: 650px;
+  gap: 40px;
   margin-top: 2rem;
   padding-bottom: 0.5rem;
 }

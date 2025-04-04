@@ -15,45 +15,43 @@
     <link rel="stylesheet" href="grant-no-notSure-styles.css" />
   </head>
   <body>
-    <div class="container">
-      <img
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/fec6d81e4e6a05c3f7bfe9354ad525985702ab7a"
-        alt="Sidra Medicine Logo"
-        class="logo"
-      />
 
-      <div class="main-content">
-        <h1 class="title">
+
+    <main class="container" role="main" aria-labelledby="page-title">
+      <header>
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/fec6d81e4e6a05c3f7bfe9354ad525985702ab7a"
+          alt="Sidra Medicine Logo"
+          class="logo"
+        />
+      </header>
+
+      <section class="content">
+        <h1 class="title" id="page-title">
           Your Research Activity will require an IRB Determination letter.
         </h1>
 
         <p class="subtitle">
-          Please refer to the IRB Office to request for IRB Determination letter
+          Please refer to the IRB Office to request for an IRB Determination letter.
         </p>
 
-        <h2 class="instructions-title">To proceed with your application:</h2>
+        <ol class="instructions" aria-label="Application instructions">
+          <li>
+            Download and complete the
+            <a href="appendices/APPENDIX.2.docx" class="link" download>
+              application form document (Appendix 2)</a>.
+          </li>
+          <li>
+            Download and complete the
+            <a href="appendices/GENERAL_FORM.docx" class="link" download>
+              general form document</a>.
+          </li>
+          <li>Upload both completed documents below.</li>
+        </ol>
 
-        <div class="instructions">
-          <p class="instruction-text">
-            Download and fill the
-            <a href="#" class="instruction-link"
-              >application form document (Appendix 2)</a
-            >.
-          </p>
-
-          <p class="instruction-text">
-            Download and fill the
-            <a href="#" class="instruction-link">general form document</a>.
-          </p>
-
-          <p class="instruction-text">
-            Upload both documents in the following Dropbox.
-          </p>
-        </div>
-
-        <div class="upload-box" id="upload-dropzone">
-          <span class="upload-icon">⬆</span>
-          <span class="upload-text">Upload Documents</span>
+        <label for="file-upload" class="upload-box" aria-label="Upload documents">
+          <span class="upload-icon ti ti-upload"></span>
+          <span class="upload-text">Click to Upload or Drag & Drop Files</span>
           <input
             type="file"
             id="file-upload"
@@ -61,16 +59,16 @@
             class="file-input"
             accept=".pdf,.doc,.docx"
           />
+        </label>
+
+        <ul class="file-list" id="file-list"></ul>
+
+        <div class="button-container">
+          <button type="button" class="back-button" id="back-button">Back</button>
+          <button type="submit" class="submit-button" id="submit-button">Submit</button>
         </div>
-
-        <div id="file-list" class="file-list"></div>
-      </div>
-
-      <div class="button-container">
-        <button class="back-btn" id="back-button">Back</button>
-        <button class="submit-btn" id="submit-button">Submit</button>
-      </div>
-    </div>
+      </section>
+    </main>
 
     <script src="grant-no-notSure-script.js"></script>
   </body>
