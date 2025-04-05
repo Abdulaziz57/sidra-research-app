@@ -4,391 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Dashboard</title>
-    <style>
-      /* Reset and base styles */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family:
-          Inter,
-          -apple-system,
-          Roboto,
-          Helvetica,
-          sans-serif;
-        font-size: 16px;
-        line-height: 1.5;
-        color: #333;
-        background-color: #f3f4f6;
-      }
-
-      /* Dashboard container */
-      .dashboard-container {
-        display: flex;
-        min-height: 100vh;
-        width: 100%;
-        background-color: #f3f4f6;
-        border: 1px solid #000;
-      }
-
-      /* Main layout */
-      .layout-wrapper {
-        display: flex;
-        width: 100%;
-      }
-
-      /* Sidebar styles */
-      .sidebar {
-        width: 20%;
-        min-width: 250px;
-        background-color: #fff;
-        border-right: 2px solid #a2a4a8;
-      }
-
-      .sidebar-content {
-        padding: 2rem 1.5rem;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .logo {
-        width: 100%;
-        max-width: 200px;
-        height: auto;
-        margin-bottom: 2rem;
-      }
-
-      nav {
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-      }
-
-      .nav-item,
-      .notifications-item {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-        font-size: 1.2rem;
-        font-weight: 600;
-        cursor: pointer;
-      }
-
-      .nav-icon,
-      .notifications-icon,
-      .signout-icon {
-        width: 24px;
-        height: 24px;
-      }
-
-        .signout-button {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        background: none;
-        border: none;
-        cursor: pointer;
-        color: #c00f0c;
-        font-size: 1.2rem;
-        font-weight: 600;
-        width: 100%;
-        text-align: left;
-        padding: 1rem;
-        }
-
-        .signout-button:hover {
-        opacity: 0.8;
-        }
-
-      .signout-item {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        margin-top: auto;
-        color: #c00f0c;
-        font-size: 1.2rem;
-        font-weight: 600;
-        cursor: pointer;
-      }
-
-      /* Main content styles */
-      .main-content {
-        flex: 1;
-        padding: 2rem;
-        overflow-y: auto;
-      }
-
-      .content-wrapper {
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-
-      .page-title {
-        font-size: 2.5rem;
-        font-weight: 800;
-        margin-bottom: 2rem;
-        color: #000;
-      }
-
-      .welcome-card {
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        padding: 2rem;
-        margin-bottom: 2rem;
-        border: 1px solid #e5e5e5;
-      }
-
-      .welcome-title {
-        font-size: 1.8rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
-      }
-
-      .welcome-description {
-        font-size: 1.1rem;
-        color: #636364;
-        font-weight: 500;
-        line-height: 1.5;
-      }
-
-      /* Card sections */
-      .applications-section,
-      .registration-section {
-        margin-bottom: 2rem;
-      }
-
-      .applications-section .layout-wrapper,
-      .registration-section .layout-wrapper {
-        display: flex;
-        gap: 1rem;
-      }
-
-      /* Card styles */
-      .new-applications-card,
-      .rejected-applications-card,
-      .approved-applications-card,
-      .user-registrations-card,
-      .total-applications-card {
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        padding: 1.5rem;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        border: 1px solid #e5e5e5;
-      }
-
-      .new-applications-card {
-        background-color: rgba(234, 220, 64, 0.52);
-      }
-
-      .rejected-applications-card {
-        background-color: rgba(228, 126, 126, 0.68);
-      }
-
-      .approved-applications-card {
-        background-color: rgba(158, 217, 146, 1);
-      }
-
-      .user-registrations-card {
-        background-color: rgba(167, 201, 233, 1);
-      }
-
-      .total-applications-card {
-        background-color: rgba(194, 199, 183, 1);
-      }
-
-      /* Card titles */
-      .new-applications-title,
-      .rejected-applications-title,
-      .approved-applications-title {
-        font-size: 1.3rem;
-        font-weight: 600;
-        margin-bottom: 1.5rem;
-      }
-
-      .new-applications-title {
-        color: rgba(117, 117, 33, 1);
-      }
-
-      .rejected-applications-title {
-        color: rgba(92, 28, 28, 1);
-      }
-
-      .approved-applications-title {
-        color: rgba(40, 92, 17, 1);
-      }
-
-      /* Stats display */
-      .new-applications-stats,
-      .rejected-applications-stats,
-      .approved-applications-stats {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        margin-top: auto;
-      }
-
-      .stat-number {
-        font-size: 3rem;
-        font-weight: 600;
-        color: rgba(4, 86, 145, 1);
-      }
-
-      .stat-label-pending,
-      .stat-label-rejected,
-      .stat-label-approved {
-        font-size: 1.2rem;
-        font-weight: 500;
-        align-self: flex-end;
-      }
-
-      /* Registration cards */
-      .user-registrations-column,
-      .total-applications-column {
-        display: flex;
-      }
-
-      .user-registrations-column {
-        width: 33%;
-      }
-
-      .total-applications-column {
-        width: 67%;
-      }
-
-      .user-registrations-title,
-      .total-applications-title {
-        color: #fff;
-        font-size: 1.3rem;
-        font-weight: 700;
-        margin-top: 1rem;
-      }
-
-      /* Column layouts */
-      .new-applications-column,
-      .rejected-applications-column,
-      .approved-applications-column {
-        width: 33.33%;
-      }
-
-      /* Responsive styles */
-      @media (max-width: 1200px) {
-        .sidebar {
-          min-width: 200px;
-        }
-      }
-
-      @media (max-width: 991px) {
-        .layout-wrapper {
-          flex-direction: column;
-        }
-
-        .sidebar {
-          width: 100%;
-          min-width: 100%;
-          border-right: none;
-          border-bottom: 2px solid #a2a4a8;
-        }
-
-        .sidebar-content {
-          padding: 1.5rem;
-        }
-
-        nav {
-          flex-direction: row;
-          justify-content: space-around;
-          flex-wrap: wrap;
-        }
-
-        .nav-item,
-        .notifications-item,
-        .signout-item {
-          margin: 0.5rem 1rem;
-        }
-
-        .signout-item {
-          margin-top: 0;
-        }
-
-        .main-content {
-          padding: 1.5rem;
-        }
-
-        .applications-section .layout-wrapper,
-        .registration-section .layout-wrapper {
-          flex-direction: column;
-        }
-
-        .new-applications-column,
-        .rejected-applications-column,
-        .approved-applications-column,
-        .user-registrations-column,
-        .total-applications-column {
-          width: 100%;
-          margin-bottom: 1rem;
-        }
-
-        .page-title {
-          font-size: 2rem;
-        }
-
-        .welcome-title {
-          font-size: 1.5rem;
-        }
-
-        .welcome-description {
-          font-size: 1rem;
-        }
-      }
-
-      @media (max-width: 576px) {
-        .sidebar-content {
-          padding: 1rem;
-        }
-
-        .main-content {
-          padding: 1rem;
-        }
-
-        .page-title {
-          font-size: 1.8rem;
-        }
-
-        .welcome-card,
-        .new-applications-card,
-        .rejected-applications-card,
-        .approved-applications-card,
-        .user-registrations-card,
-        .total-applications-card {
-          padding: 1rem;
-        }
-
-        .new-applications-title,
-        .rejected-applications-title,
-        .approved-applications-title,
-        .user-registrations-title,
-        .total-applications-title {
-          font-size: 1.1rem;
-        }
-
-        .stat-number {
-          font-size: 2.5rem;
-        }
-
-        .stat-label-pending,
-        .stat-label-rejected,
-        .stat-label-approved {
-          font-size: 1rem;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="adminPage-styles.css" />
   </head>
   <body>
     <main class="dashboard-container">
@@ -401,7 +17,6 @@
               alt="Logo"
               class="logo"
             />
-
             <nav>
               <div class="nav-item">
                 <img
@@ -446,8 +61,7 @@
             <section class="welcome-card">
               <h2 class="welcome-title">Welcome to your admin dashboard</h2>
               <p class="welcome-description">
-                This page is where you'll track New (Pending), Rejected and
-                Approved applications.
+                This page is where you'll track New (Pending), Rejected and Approved applications.
               </p>
             </section>
 
@@ -468,9 +82,7 @@
                 <!-- Rejected Applications Card -->
                 <article class="rejected-applications-column">
                   <div class="rejected-applications-card">
-                    <h3 class="rejected-applications-title">
-                      Rejected Applications
-                    </h3>
+                    <h3 class="rejected-applications-title">Rejected Applications</h3>
                     <div class="rejected-applications-stats">
                       <p class="stat-number">12</p>
                       <p class="stat-label-rejected">Rejected</p>
@@ -481,9 +93,7 @@
                 <!-- Approved Applications Card -->
                 <article class="approved-applications-column">
                   <div class="approved-applications-card">
-                    <h3 class="approved-applications-title">
-                      Approved Applications
-                    </h3>
+                    <h3 class="approved-applications-title">Approved Applications</h3>
                     <div class="approved-applications-stats">
                       <p class="stat-number">12</p>
                       <p class="stat-label-approved">Approved</p>
@@ -493,17 +103,13 @@
               </div>
             </section>
 
-                <!-- Total Applications Card -->
-                <article class="total-applications-column">
-                  <div class="total-applications-card">
-                    <p class="stat-number">65</p>
-                    <h3 class="total-applications-title">
-                      Total Number of Applications
-                    </h3>
-                  </div>
-                </article>
+            <!-- Total Applications Card -->
+            <article class="total-applications-column">
+              <div class="total-applications-card">
+                <p class="stat-number">65</p>
+                <h3 class="total-applications-title">Total Number of Applications</h3>
               </div>
-            </section>
+            </article>
           </div>
         </section>
       </div>
