@@ -26,7 +26,14 @@ body {
   text-align: center;
 }
 
-.sidebar img {
+.sidebar-sidra img {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  display: block;
+}
+
+.sidebar-signout img {
   width: 24px;
     height: 24px;
 }

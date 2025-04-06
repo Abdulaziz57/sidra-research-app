@@ -8,14 +8,15 @@
 </head>
 <body>
   <div class="sidebar">
-    <div>
-      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5fe0ae6b079921c01f73a14cf750f2d80a7f98547c676dcb530b01ca135bafd4" alt="Sidra Medicine" />
-      <p>
-        Sidra Medicine advances healthcare through research and innovation.
-        This portal enables researchers to submit, track, and manage applications efficiently.
-      </p>
-    </div>
+  <div class="sidebar-sidra">
+    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5fe0ae6b079921c01f73a14cf750f2d80a7f98547c676dcb530b01ca135bafd4" alt="Sidra Medicine" />
+    <p>
+      Sidra Medicine advances healthcare through research and innovation.
+      This portal enables researchers to submit, track, and manage applications efficiently.
+    </p>
+  </div>
 
+  <div class="sidebar-signout">
     <form th:action="@{/logout}" method="post" class="signout-item">
       <button type="submit" class="signout-button">
         <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/28b5f78cd252ed23988571dddd34923a796b877e39696ff79c1a04fbd4a8797b" alt="Sign Out Icon" class="signout-icon"/>
@@ -23,6 +24,8 @@
       </button>
     </form>
   </div>
+</div>
+
 
   <div class="main-content">
     <div class="header">
