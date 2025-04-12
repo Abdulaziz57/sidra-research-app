@@ -1,41 +1,30 @@
-/**
- * IRB Determination Page JavaScript
- * Handles file uploads, form submission, and backend integration.
- */
-
 document.addEventListener("DOMContentLoaded", function () {
-  // DOM Elements
-  const uploadDropzone = document.getElementById("upload-dropzone");
+  // Elements
   const fileInput = document.getElementById("file-upload");
-  const fileList = document.getElementById("file-list");
+  const uploadBox = document.querySelector(".upload-box");
+  const uploadText = document.querySelector(".upload-text");
   const backButton = document.getElementById("back-button");
   const submitButton = document.getElementById("submit-button");
-  const fileListContainer = document.createElement("div"); // Container for selected files
+  const darkToggle = document.getElementById("darkModeToggle");
+  const fileListContainer = document.getElementById("file-list");
+
   let uploadedFiles = [];
 
-  // Append file list container below upload box
-  fileListContainer.className = "file-list";
-  uploadDropzone.parentNode.insertBefore(fileListContainer, uploadDropzone.nextSibling);
-
-  /**
-   * Prevent file input from opening twice
-   */
-  uploadDropzone.addEventListener("click", function (event) {
-    event.stopPropagation(); // Stop event from bubbling
+  // Upload box click handler
+  uploadBox.addEventListener("click", function (event) {
+    event.stopPropagation();
     if (document.activeElement !== fileInput) {
-      fileInput.value = ""; // Reset input to allow re-selection
+      fileInput.value = "";
       fileInput.click();
     }
   });
 
-  /**
-   * Handle file selection
-   */
-  fileInput.addEventListener("change", function (e) {
-    if (!e.target.files.length) return;
-    const newFiles = Array.from(e.target.files);
+  // Handle file selection
+  fileInput.addEventListener("change", function (event) {
+    if (!event.target.files.length) return;
 
-    // Prevent duplicate files
+    const newFiles = Array.from(event.target.files);
+
     uploadedFiles = [...uploadedFiles, ...newFiles].filter(
       (file, index, self) =>
         self.findIndex((f) => f.name === file.name) === index
@@ -44,121 +33,110 @@ document.addEventListener("DOMContentLoaded", function () {
     updateFileList();
   });
 
-  /**
-   * Handle drag and drop events
-   */
-  uploadDropzone.addEventListener("dragover", function (e) {
+  // Drag and drop support
+  uploadBox.addEventListener("dragover", function (e) {
     e.preventDefault();
-    uploadDropzone.style.backgroundColor = "#f0f0f0";
-    uploadDropzone.style.borderColor = "rgba(0, 128, 128, 0.96)";
+    uploadBox.style.backgroundColor = "#f0f0f0";
+    uploadBox.style.borderColor = "#036269";
   });
 
-  uploadDropzone.addEventListener("dragleave", function (e) {
+  uploadBox.addEventListener("dragleave", function (e) {
     e.preventDefault();
-    uploadDropzone.style.backgroundColor = "#fff";
-    uploadDropzone.style.borderColor = "#878787";
+    uploadBox.style.backgroundColor = "#fafafa";
+    uploadBox.style.borderColor = "#ccc";
   });
 
-  uploadDropzone.addEventListener("drop", function (e) {
+  uploadBox.addEventListener("drop", function (e) {
     e.preventDefault();
-    uploadDropzone.style.backgroundColor = "#fff";
-    uploadDropzone.style.borderColor = "#878787";
+    uploadBox.style.backgroundColor = "#fafafa";
+    uploadBox.style.borderColor = "#ccc";
 
-    const files = e.dataTransfer.files;
-    if (files.length) {
-      uploadedFiles = [...uploadedFiles, ...Array.from(files)].filter(
-        (file, index, self) =>
-          self.findIndex((f) => f.name === file.name) === index
-      );
-      updateFileList();
-    }
+    const newFiles = Array.from(e.dataTransfer.files);
+
+    uploadedFiles = [...uploadedFiles, ...newFiles].filter(
+      (file, index, self) =>
+        self.findIndex((f) => f.name === file.name) === index
+    );
+
+    updateFileList();
   });
 
-  /**
-   * Update the displayed file list
-   */
+  // Update file list UI
   function updateFileList() {
-    fileListContainer.innerHTML = ""; // Clear previous list
+    fileListContainer.innerHTML = "";
 
     if (uploadedFiles.length > 0) {
-      uploadedFiles.forEach((file, index) => {
-        const fileItem = document.createElement("div");
-        fileItem.className = "file-item";
-        fileItem.textContent = file.name;
-
-        // Remove button
-        const removeButton = document.createElement("button");
-        removeButton.textContent = "✖";
-        removeButton.className = "remove-file";
-        removeButton.onclick = function () {
-          uploadedFiles.splice(index, 1);
-          updateFileList();
-        };
-
-        fileItem.appendChild(removeButton);
-        fileListContainer.appendChild(fileItem);
-      });
+      uploadText.textContent = `${uploadedFiles.length} file(s) selected`;
+      uploadBox.style.borderColor = "#036269";
+      uploadText.style.color =
+        document.body.classList.contains("dark") ? "#eee" : "#000";
+    } else {
+      uploadText.textContent = "⬆ Upload Documents";
+      uploadBox.style.borderColor = "rgba(0, 0, 0, 0.1)";
+      uploadText.style.color = "rgba(0, 0, 0, 0.27)";
     }
-  }
 
-  /**
-   * Handle back button click
-   */
-  backButton.addEventListener("click", function () {
-    this.classList.add("clicked");
-    setTimeout(() => {
-      this.classList.remove("clicked");
-      window.location.href = "grant-no-path.html";
-    }, 200);
-  });
+    uploadedFiles.forEach((file, i) => {
+      const fileItem = document.createElement("div");
+      fileItem.className = "file-item";
 
-  /**
-   * Handle submit button click - Sends files to the server
-   */
-  submitButton.addEventListener("click", async function () {
-    this.classList.add("clicked");
+      const nameSpan = document.createElement("span");
+      nameSpan.className = "file-name";
+      nameSpan.textContent = file.name;
 
-    setTimeout(async () => {
-      this.classList.remove("clicked");
-
-      if (uploadedFiles.length === 0) {
-        alert("Please upload at least one document before submitting.");
-        return;
-      }
-
-      const formData = new FormData();
-      uploadedFiles.forEach((file) => {
-        formData.append("files", file);
+      const removeButton = document.createElement("button");
+      removeButton.textContent = "✖";
+      removeButton.className = "remove-file";
+      removeButton.setAttribute("aria-label", `Remove ${file.name}`);
+      removeButton.addEventListener("click", () => {
+        uploadedFiles.splice(i, 1);
+        updateFileList();
       });
 
-      try {
-        // Send files to backend for processing
-        const response = await fetch("http://localhost:5050/upload", {
-          method: "POST",
-          body: formData,
-        });
-
-        if (response.ok) {
-          //alert(`Successfully submitted ${uploadedFiles.length} document(s).`);
-          uploadedFiles = [];
-          updateFileList();
-          window.location.href = "thankYouPage.html";
-        } else {
-          alert("Failed to submit documents.");
-        }
-      } catch (error) {
-        console.error("Error submitting files:", error);
-        alert("An error occurred while submitting documents.");
-      }
-    }, 200);
-  });
-
-  /**
-   * Initialize the page
-   */
-  function init() {
-    console.log("IRB Determination page initialized");
+      fileItem.appendChild(nameSpan);
+      fileItem.appendChild(removeButton);
+      fileListContainer.appendChild(fileItem);
+    });
   }
 
-  init();
+  // Back button
+  backButton.addEventListener("click", function () {
+    window.history.back();
+  });
+
+  // Submit button
+  submitButton.addEventListener("click", async function () {
+    if (uploadedFiles.length === 0) {
+      alert("Please upload at least one document before submitting.");
+      return;
+    }
+
+    const formData = new FormData();
+    uploadedFiles.forEach((file) => formData.append("files", file));
+
+    try {
+      // Send files to backend for processing (Postgres version)
+      const response = await fetch("http://localhost:5050/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        uploadedFiles = [];
+        updateFileList();
+        window.location.href = "thankYouPage.html";
+      } else {
+        alert("Failed to submit documents.");
+      }
+    } catch (error) {
+      console.error("Error submitting files:", error);
+      alert("An error occurred while submitting documents.");
+    }
+  });
+
+  // Dark mode toggle
+  darkToggle?.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    updateFileList(); // Refresh colors
+  });
 });

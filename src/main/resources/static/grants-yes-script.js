@@ -1,34 +1,34 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Get elements
+  // Elements
   const fileInput = document.getElementById("fileUpload");
   const uploadBox = document.querySelector(".upload-box");
   const uploadText = document.querySelector(".upload-text");
-  const fileListContainer = document.createElement("div"); // Container for selected files
   const backButton = document.querySelector(".back-button");
   const submitButton = document.querySelector(".submit-button");
+  const darkToggle = document.getElementById("darkModeToggle");
 
-  let selectedFiles = [];
-
-  // Append file list container below upload box
+  const fileListContainer = document.createElement("div");
   fileListContainer.className = "file-list";
   uploadBox.parentNode.insertBefore(fileListContainer, uploadBox.nextSibling);
 
-  // Ensure file input opens only ONCE per click
+  let selectedFiles = [];
+
+  // Upload box click handler
   uploadBox.addEventListener("click", function (event) {
-    event.stopPropagation(); // Stop event from bubbling up
+    event.stopPropagation();
     if (document.activeElement !== fileInput) {
-      fileInput.value = ""; // Reset input to allow re-selection
+      fileInput.value = "";
       fileInput.click();
     }
   });
 
   // Handle file selection
   fileInput.addEventListener("change", function (event) {
-    if (!event.target.files.length) return; // Prevent empty selections
+    if (!event.target.files.length) return;
 
     const newFiles = Array.from(event.target.files);
 
-    // Append new files while preventing duplicates
+    // Prevent duplicates
     selectedFiles = [...selectedFiles, ...newFiles].filter(
       (file, index, self) =>
         self.findIndex((f) => f.name === file.name) === index
@@ -37,42 +37,47 @@ document.addEventListener("DOMContentLoaded", function () {
     updateFileList();
   });
 
-  // Update file list display
+  // Update file list UI
   function updateFileList() {
-    fileListContainer.innerHTML = ""; // Clear previous list
+    fileListContainer.innerHTML = "";
 
     if (selectedFiles.length > 0) {
       uploadText.textContent = `${selectedFiles.length} file(s) selected`;
       uploadBox.style.borderColor = "#036269";
-      uploadText.style.color = "#000";
-
-      selectedFiles.forEach((file, index) => {
-        const fileItem = document.createElement("div");
-        fileItem.className = "file-item";
-        fileItem.textContent = file.name;
-
-        // Create remove button
-        const removeButton = document.createElement("button");
-        removeButton.textContent = "✖";
-        removeButton.className = "remove-file";
-        removeButton.onclick = function () {
-          selectedFiles.splice(index, 1);
-          updateFileList();
-        };
-
-        fileItem.appendChild(removeButton);
-        fileListContainer.appendChild(fileItem);
-      });
+      uploadText.style.color =
+        document.body.classList.contains("dark") ? "#eee" : "#000";
     } else {
       uploadText.textContent = "⬆ Upload Documents";
       uploadBox.style.borderColor = "rgba(0, 0, 0, 0.1)";
       uploadText.style.color = "rgba(0, 0, 0, 0.27)";
     }
+
+    selectedFiles.forEach((file, i) => {
+      const fileItem = document.createElement("div");
+      fileItem.className = "file-item";
+
+      const nameSpan = document.createElement("span");
+      nameSpan.className = "file-name";
+      nameSpan.textContent = file.name;
+
+      const removeButton = document.createElement("button");
+      removeButton.textContent = "✖";
+      removeButton.className = "remove-file";
+      removeButton.setAttribute("aria-label", `Remove ${file.name}`);
+      removeButton.addEventListener("click", () => {
+        selectedFiles.splice(i, 1);
+        updateFileList();
+      });
+
+      fileItem.appendChild(nameSpan);
+      fileItem.appendChild(removeButton);
+      fileListContainer.appendChild(fileItem);
+    });
   }
 
-  // Go back button
+  // Back button
   backButton.addEventListener("click", function () {
-    window.history.back(); // Uses browser history to go back
+    window.history.back();
   });
 
   // Submit button
@@ -83,9 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const formData = new FormData();
-    selectedFiles.forEach((file) => {
-      formData.append("files", file);
-    });
+    selectedFiles.forEach((file) => formData.append("files", file));
 
     try {
       // Send files to backend for processing
@@ -97,7 +100,9 @@ document.addEventListener("DOMContentLoaded", function () {
       if (response.ok) {
         fileInput.value = "";
         selectedFiles = [];
-        updateFileList(); // Reset UI
+        updateFileList();
+
+        // Redirect to thank you page
         window.location.href = "thankYouPage.html";
       } else {
         alert("Failed to submit documents.");
@@ -106,5 +111,11 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error submitting files:", error);
       alert("An error occurred while submitting documents.");
     }
+  });
+
+  // Dark mode toggle
+  darkToggle?.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    updateFileList(); // Refresh colors
   });
 });

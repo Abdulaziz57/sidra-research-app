@@ -15,42 +15,48 @@
     <link rel="stylesheet" href="grant-yes-styles.css" />
   </head>
   <body>
-    <main class="container">
-      <img
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/fec6d81e4e6a05c3f7bfe9354ad525985702ab7a"
-        alt="Sidra Medicine Logo"
-        class="logo"
-      />
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+      🌓 Dark Mode
+    </button>
+
+    <main class="container" role="main" aria-labelledby="page-title">
+      <header>
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/fec6d81e4e6a05c3f7bfe9354ad525985702ab7a"
+          alt="Sidra Medicine Logo"
+          class="logo"
+        />
+      </header>
 
       <section class="content">
-        <h1 class="title">Please contact the Grants and Contracts Office</h1>
-        <h2 class="subtitle">To proceed with your application:</h2>
+        <h1 class="title" id="page-title">Contact the Grants and Contracts Office</h1>
+        <p class="subtitle">To proceed with your application, please:</p>
 
-        <div class="instructions">
-          <p class="instruction">
-            1. Download and fill the
-            <a href="#" class="link">application form document (Appendix 3)</a>.
-          </p>
-          <p class="instruction">
-            2. Download and fill the
-            <a href="#" class="link">general form document</a>.
-          </p>
-          <p class="instruction">
-            3. Upload both documents in the following Dropbox.
-          </p>
-        </div>
+        <ol class="instructions" aria-label="Application instructions">
+          <li>
+            Download and complete the
+            <a href="appendices/APPENDIX.3.docx" class="link" download> application form document (Appendix 3)</a>.
+          </li>
+          <li>
+            Download and complete the
+            <a href="appendices/GENERAL_FORM.docx" class="link" download> general form document</a>.
+          </li>
+          <li>Upload both completed documents below.</li>
+        </ol>
 
-        <div class="upload-box">
-          <p class="upload-text">⬆ Upload Documents</p>
+        <label for="fileUpload" class="upload-box" aria-label="Upload documents">
+          <span class="upload-icon ti ti-upload"></span>
+          <span class="upload-text">Click to Upload or Drag & Drop Files</span>
           <input type="file" id="fileUpload" class="file-input" multiple />
+        </label>
+
+        <ul class="file-list" id="fileList"></ul>
+        <div class="button-container">
+          <button type="button" class="back-button">Back</button>
+          <button type="submit" class="submit-button">Submit</button>
         </div>
       </section>
 
-      <div class="button-container">
-        <button type="button" class="back-button">Back</button>
-        <button type="button" class="submit-button">Submit</button>
-      </div>
-    </main>
 
     <script src="grants-yes-script.js"></script>
   </body>

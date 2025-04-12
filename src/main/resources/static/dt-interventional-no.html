@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sidra Medicine - Grants Application</title>
+    <title>Sidra Medicine – IRB Protocol Approval</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
@@ -16,42 +16,48 @@
   </head>
   <body>
     <main class="container">
-      <img
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/fec6d81e4e6a05c3f7bfe9354ad525985702ab7a"
-        alt="Sidra Medicine Logo"
-        class="logo"
-      />
+      <header>
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/fec6d81e4e6a05c3f7bfe9354ad525985702ab7a"
+          alt="Sidra Medicine Logo"
+          class="logo"
+        />
+      </header>
 
       <section class="content">
-        <h1 class="title">Your Research Activity will require Institutional Review Board (IRB) protocol Approval.</h1>
-        <h3 class="subtitle">Please refer to the IRB office at irb@sidra.org</h3>
+        <h1 class="title">
+          Your Research Activity will require Institutional Review Board (IRB) protocol Approval.
+        </h1>
 
-        <h2 class="subtitle">To proceed with your application:</h2>
+        <p class="email-text">Email: irb@sidra.org</p>
+        <p class="subtitle">To proceed with your application:</p>
 
-        <div class="instructions">
-          <p class="instruction">
-            1. Download and fill the
-            <a href="#" class="link">application form document (Appendix 1)</a>.
-          </p>
-          <p class="instruction">
-            2. Download and fill the
-            <a href="#" class="link">general form document</a>.
-          </p>
-          <p class="instruction">
-            3. Upload both documents in the following Dropbox.
-          </p>
-        </div>
+        <ol class="instructions">
+          <li>
+            Download and complete the
+            <a href="appendices/APPENDIX.1.docx" class="link" download>application form document (Appendix 1)</a>.
+          </li>
+          <li>
+            Download and complete the
+            <a href="appendices/GENERAL_FORM.docx" class="link" download>general form document</a>.
+          </li>
+          <li>Upload both completed documents below.</li>
+        </ol>
 
-        <div class="upload-box">
-          <p class="upload-text">⬆ Upload Documents</p>
+        <label for="fileUpload" class="upload-box">
+          <span class="upload-icon ti ti-upload"></span>
+          <span class="upload-text">Click to Upload or Drag & Drop Files</span>
           <input type="file" id="fileUpload" class="file-input" multiple />
+        </label>
+
+        <ul class="file-list" id="fileList"></ul>
+
+        <div class="button-container">
+          <button type="button" class="back-button">Back</button>
+          <button type="submit" class="submit-button">Submit</button>
         </div>
       </section>
 
-      <div class="button-container">
-        <button type="button" class="back-button">Back</button>
-        <button type="button" class="submit-button">Submit</button>
-      </div>
     </main>
 
     <script src="dt-interventional-no-script.js"></script>

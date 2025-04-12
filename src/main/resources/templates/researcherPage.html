@@ -2,30 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Researcher Dashboard</title>
-  <link rel="stylesheet" href="researcherPage-styles.css" />
+  <link rel="stylesheet" href="/css/researcherPage.css" />
 </head>
 <body>
   <div class="sidebar">
-  <div class="sidebar-sidra">
-    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5fe0ae6b079921c01f73a14cf750f2d80a7f98547c676dcb530b01ca135bafd4" alt="Sidra Medicine" />
-    <p>
-      Sidra Medicine advances healthcare through research and innovation.
-      This portal enables researchers to submit, track, and manage applications efficiently.
-    </p>
-  </div>
+    <div class="sidebar-sidra">
+      <img
+        src="https://cdn.builder.io/api/v1/image/assets/TEMP/5fe0ae6b079921c01f73a14cf750f2d80a7f98547c676dcb530b01ca135bafd4"
+        alt="Sidra Medicine"
+      />
+      <p>
+        Sidra Medicine advances healthcare through research and innovation.
+        This portal enables researchers to submit, track, and manage applications efficiently.
+      </p>
+    </div>
 
-  <div class="sidebar-signout">
-    <form th:action="@{/logout}" method="post" class="signout-item">
-      <button type="submit" class="signout-button">
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/28b5f78cd252ed23988571dddd34923a796b877e39696ff79c1a04fbd4a8797b" alt="Sign Out Icon" class="signout-icon"/>
-        <h2 class="signout-text">Sign Out</h2>
-      </button>
-    </form>
+    <div class="sidebar-signout">
+      <form th:action="@{/logout}" method="post" class="signout-item">
+        <button type="submit" class="signout-button">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/28b5f78cd252ed23988571dddd34923a796b877e39696ff79c1a04fbd4a8797b"
+            alt="Sign Out Icon"
+            class="signout-icon"
+          />
+          <h2 class="signout-text">Sign Out</h2>
+        </button>
+      </form>
+    </div>
   </div>
-</div>
-
 
   <div class="main-content">
     <div class="header">
@@ -35,18 +41,40 @@
 
     <div class="welcome-box">
       <h3>Welcome to your Dashboard</h3>
-      <p>You will find all your Rejected, Pending, and Approved applications here.</p>
+      <p>You will find all your applications and statuses in the table below.</p>
     </div>
-    <div class="refresh-container">
-        <button class="refresh-button" id="refresh-btn">&#x21bb; Refresh</button>
-    </div>
-      
 
-    <div class="applications" id="applications-container">
-      <!-- Records will be inserted here -->
+    <div class="applications-table-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Project Name</th>
+            <th>Date Submitted</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="application-rows">
+          <!-- Example static rows -->
+          <tr>
+            <td>Cancer Research Study</td>
+            <td>2025-01-15</td>
+            <td><span class="status pending">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Cardiovascular Health Analysis</td>
+            <td>2025-02-12</td>
+            <td><span class="status approved">Approved</span></td>
+          </tr>
+          <tr>
+            <td>Obesity Risk Factors</td>
+            <td>2024-11-04</td>
+            <td><span class="status rejected">Rejected</span></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
-  <script type="module" src="researcherPage-script.js"></script>
+  <script src="/js/researcherPage-script.js"></script>
 </body>
 </html>
