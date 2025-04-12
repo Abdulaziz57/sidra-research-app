@@ -86,10 +86,12 @@ td {
   font-size: 14px;
   text-align: left;
   vertical-align: middle;
+  word-break: break-word;
+  white-space: normal;
 }
 
 th {
-  background-color: #036269;
+  background-color: #036269; /* Unified style */
   color: #fff;
   font-weight: 600;
   text-transform: uppercase;
@@ -100,12 +102,17 @@ td {
   border-top: 1px solid #eaeaea;
 }
 
+td:nth-child(1) {
+  white-space: nowrap;
+  word-break: normal;
+}
+
 tr:nth-child(even) td {
   background-color: #f9fafa;
 }
 
 tr:hover td {
-  background-color: inherit;
+  background-color: inherit; /* No hover effect */
 }
 
 /* Status dropdown */

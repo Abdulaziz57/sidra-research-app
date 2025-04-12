@@ -115,13 +115,13 @@ document.addEventListener("DOMContentLoaded", function () {
     uploadedFiles.forEach((file) => formData.append("files", file));
 
     try {
-      const response = await fetch("http://localhost:5000/upload", {
+      // Send files to backend for processing (Postgres version)
+      const response = await fetch("http://localhost:5050/upload", {
         method: "POST",
         body: formData,
       });
 
       if (response.ok) {
-        fileInput.value = "";
         uploadedFiles = [];
         updateFileList();
         window.location.href = "thankYouPage.html";
@@ -132,5 +132,11 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error submitting files:", error);
       alert("An error occurred while submitting documents.");
     }
+  });
+
+  // Dark mode toggle
+  darkToggle?.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    updateFileList(); // Refresh colors
   });
 });
