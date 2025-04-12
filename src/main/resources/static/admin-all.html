@@ -4,16 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Dashboard</title>
-  <link rel="stylesheet" href="admin-approved.css" />
+  <link rel="stylesheet" href="admin-all.css" />
   <script type="module" src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.5/+esm"></script>
 </head>
 <body>
   <div class="main-content">
+    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5fe0ae6b079921c01f73a14cf750f2d80a7f98547c676dcb530b01ca135bafd4"
+         alt="Sidra Medicine Logo"
+         class="sidra-logo" />
 
-    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5fe0ae6b079921c01f73a14cf750f2d80a7f98547c676dcb530b01ca135bafd4" alt="Sidra Medicine Logo" class="sidra-logo" />
-
-
-    <h1 class="page-title">Researchers' Approved Applications</h1>
+    <!-- ✅ Title in green box -->
+    <div class="green-title-box">
+      <h1 class="section-title">Researchers' All Applications</h1>
+    </div>
 
     <div class="action-bar">
       <button class="back-button">&#8592; Back</button>
@@ -22,6 +25,16 @@
 
     <div class="applications-container">
       <table>
+        <colgroup>
+          <col style="width: 80px" />
+          <col style="width: 150px" />
+          <col style="width: 250px" />
+          <col style="width: 200px" />
+          <col style="width: 180px" />
+          <col style="width: 220px" />
+          <col style="width: 250px" />
+          <col style="width: 200px" />
+        </colgroup>
         <thead id="applications-header"></thead>
         <tbody id="applications-table"></tbody>
       </table>

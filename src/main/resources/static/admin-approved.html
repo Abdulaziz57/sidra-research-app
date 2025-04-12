@@ -1,41 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="admin-approved.css" />
-    <script
-      type="module"
-      src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.5/+esm"
-    ></script>
-  </head>
-  <body>
-    <div class="main-content">
-      <img
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/5fe0ae6b079921c01f73a14cf750f2d80a7f98547c676dcb530b01ca135bafd4"
-        alt="Sidra Medicine Logo"
-        class="sidra-logo"
-      />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="admin-approved.css" />
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.5/+esm"></script>
+</head>
+<body>
+  <div class="main-content">
+    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5fe0ae6b079921c01f73a14cf750f2d80a7f98547c676dcb530b01ca135bafd4"
+         alt="Sidra Medicine Logo"
+         class="sidra-logo" />
 
-      <div class="action-bar">
-        <button class="back-button">&#8592; Back</button>
-        <button class="refresh-button" id="refresh-btn">&#x21bb; Refresh</button>
-      </div>
-
-      <!-- Green title box -->
-      <div class="green-title-box">
-        <h2 class="section-title">Researchers' Approved Applications</h2>
-      </div>
-
-      <div class="applications-container">
-        <table>
-          <thead id="applications-header"></thead>
-          <tbody id="applications-table"></tbody>
-        </table>
-      </div>
+         <div class="green-title-box">
+      <h1 class="section-title">Researchers' Approved Applications</h1>
     </div>
 
-    <script type="module" src="admin-approved-script.js"></script>
-  </body>
+    <div class="action-bar">
+      <button class="back-button">&#8592; Back</button>
+      <button class="refresh-button" id="refresh-btn">&#x21bb; Refresh</button>
+    </div>
+
+    <div class="applications-container">
+      <table>
+        <colgroup>
+          <col style="width: 80px" />   <!-- ID -->
+          <col style="width: 150px" />  <!-- STATUS -->
+          <col style="width: 250px" />  <!-- SUBMITTED AT -->
+          <col style="width: 200px" />  <!-- USER EMAIL -->
+          <col style="width: 180px" />  <!-- LPI NAME -->
+          <col style="width: 220px" />  <!-- PROJECT NAME -->
+          <col style="width: 250px" />  <!-- PROJECT TYPE -->
+          <col style="width: 200px" />  <!-- DEPARTMENT -->
+        </colgroup>
+        <thead id="applications-header"></thead>
+        <tbody id="applications-table"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script type="module" src="admin-all-script.js"></script>
+</body>
 </html>

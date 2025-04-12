@@ -1,3 +1,10 @@
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Inter", sans-serif;
   background-color: #f3f4f6;
@@ -8,6 +15,7 @@ body {
   color: #222;
 }
 
+/* Layout container */
 .main-content {
   width: 100%;
   max-width: 1100px;
@@ -21,6 +29,7 @@ body {
   margin-bottom: 20px;
 }
 
+/* Action bar */
 .action-bar {
   width: 100%;
   display: flex;
@@ -34,7 +43,7 @@ body {
   color: white;
   font-family: "Inter", sans-serif;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   border: none;
   border-radius: 25px;
   padding: 10px 20px;
@@ -47,23 +56,25 @@ body {
   background-color: #024b50;
 }
 
-/* Green Title Container */
+/* ✅ Green title box */
 .green-title-box {
-  width: 50%;
+  width: 100%;
+  max-width: 700px;
   background-color: #036269;
   border-radius: 12px;
-  padding: 10px 1px;
-  margin-bottom: 20px;
+  padding: 12px 20px;
+  margin-bottom: 24px;
   text-align: center;
 }
 
 .section-title {
   color: #fff;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 600;
   margin: 0;
 }
 
+/* Table container */
 .applications-container {
   width: 100%;
   background: white;
@@ -73,6 +84,7 @@ body {
   overflow-x: auto;
 }
 
+/* Table layout */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -86,6 +98,9 @@ td {
   font-size: 14px;
   text-align: left;
   vertical-align: middle;
+  border: 1px solid #ddd;
+  word-break: break-word;
+  white-space: normal;
 }
 
 th {
@@ -100,6 +115,11 @@ td {
   border-top: 1px solid #eaeaea;
 }
 
+td:nth-child(1) {
+  white-space: nowrap;
+  word-break: normal;
+}
+
 tr:nth-child(even) td {
   background-color: #f9fafa;
 }
@@ -108,7 +128,7 @@ tr:hover td {
   background-color: inherit;
 }
 
-/* Dropdown styling */
+/* Status dropdown styling */
 .status-dropdown {
   font-family: "Inter", sans-serif;
   font-size: 14px;
@@ -126,7 +146,7 @@ tr:hover td {
   box-shadow: 0 0 0 3px rgba(3, 98, 105, 0.3);
 }
 
-/* Responsive Design */
+/* Responsive tweaks */
 @media (max-width: 768px) {
   .action-bar {
     flex-direction: column;
@@ -147,6 +167,6 @@ tr:hover td {
   }
 
   .section-title {
-    font-size: 18px;
+    font-size: 20px;
   }
 }
