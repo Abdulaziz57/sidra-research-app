@@ -115,13 +115,15 @@ document.addEventListener("DOMContentLoaded", function () {
     uploadedFiles.forEach((file) => formData.append("files", file));
 
     try {
+
+      // Send files to backend for processing (Postgres version)
+
       const response = await fetch("http://localhost:5050/upload", {
         method: "POST",
         body: formData,
       });
 
       if (response.ok) {
-        fileInput.value = "";
         uploadedFiles = [];
         updateFileList();
         window.location.href = "thankYouPage.html";

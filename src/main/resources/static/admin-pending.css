@@ -91,7 +91,7 @@ td {
 }
 
 th {
-  background-color: #036269;
+  background-color: #036269; /* Unified style */
   color: #fff;
   font-weight: 600;
   text-transform: uppercase;
@@ -112,7 +112,7 @@ tr:nth-child(even) td {
 }
 
 tr:hover td {
-  background-color: inherit;
+  background-color: inherit; /* No hover effect */
 }
 
 .status-dropdown {
