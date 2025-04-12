@@ -11,42 +11,38 @@
     <link rel="stylesheet" href="grant-question-styles.css" />
   </head>
   <body>
-    <main class="app">
-      <header class="logo">
+    <main class="decision-tree-container">
+      <div class="content">
         <img
           src="https://cdn.builder.io/api/v1/image/assets/TEMP/fec6d81e4e6a05c3f7bfe9354ad525985702ab7a"
           alt="Sidra Medicine Logo"
-          class="logo-img"
+          class="logo"
         />
-      </header>
 
-      <section class="question-container">
-        <h1 class="question">Is this a grant submission research study?</h1>
+        <section class="question-container">
+          <h2 id="main-question" class="main-question">
+            Is this a grant submission research study?
+          </h2>
+        </section>
 
-        <div class="options">
-          <div class="option">
-            <input type="checkbox" id="yes" class="checkbox" />
-            <label for="yes" class="label">Yes</label>
-          </div>
-
-          <div class="option">
-            <input type="checkbox" id="no" class="checkbox" />
-            <label for="no" class="label">No</label>
+        <div class="options-wrapper">
+          <div class="options-container" role="radiogroup" aria-labelledby="main-question">
+            <label class="option-item">
+              <input type="checkbox" id="yes" class="checkbox" />
+              <span class="option-text">Yes</span>
+            </label>
+            <label class="option-item">
+              <input type="checkbox" id="no" class="checkbox" />
+              <span class="option-text">No</span>
+            </label>
           </div>
         </div>
 
         <div class="button-container">
-          <button type="button" class="back-button">Back</button>
-          <button
-            type="button"
-            class="continue-button"
-            id="continueButton"
-            style="display: none"
-          >
-            Continue
-          </button>
+          <button class="back-button">Back</button>
+          <button class="continue-button hidden" id="continueButton">Continue</button>
         </div>
-      </section>
+      </div>
     </main>
 
     <script src="grant-question-script.js"></script>

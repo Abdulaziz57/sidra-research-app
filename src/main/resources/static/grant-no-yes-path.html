@@ -4,51 +4,58 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Decision Tree</title>
-    <link rel="stylesheet" href="grant-no-yes-styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="grant-no-yes-styles.css" />
     <script src="grant-no-yes-script.js" defer></script>
   </head>
   <body>
-    <main class="decision-tree">
-      <img
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/5fe0ae6b079921c01f73a14cf750f2d80a7f98547c676dcb530b01ca135bafd4?placeholderIfAbsent=true&apiKey=80a512e1fc2a422285d8bcb5e67321ec"
-        alt="Decision Tree Logo"
-        class="logo-image"
-      />
+    <main class="decision-tree-container">
+      <div class="content">
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/5fe0ae6b079921c01f73a14cf750f2d80a7f98547c676dcb530b01ca135bafd4?placeholderIfAbsent=true&apiKey=80a512e1fc2a422285d8bcb5e67321ec"
+          alt="Decision Tree Logo"
+          class="logo"
+        />
 
-      <section class="question-container">
-        <h1 class="question-text">Is this an Interventional Clinical trial?</h1>
-      </section>
+        <section class="question-container">
+          <h2 id="main-question" class="main-question">
+            Is this an Interventional Clinical Trial?
+          </h2>
+        </section>
 
-      <div class="options-wrapper">
-        <div class="options-container">
-          <label class="option-item yes-option">
-            <input
-              type="checkbox"
-              class="checkbox-input"
-              name="decision"
-              value="yes"
-            />
-            <span class="option-text">Yes</span>
-          </label>
+        <div class="options-wrapper">
+          <div class="options-container" role="radiogroup" aria-labelledby="main-question">
+            <label class="option-item">
+              <input
+                type="checkbox"
+                class="checkbox"
+                id="yes"
+                name="decision"
+                value="yes"
+              />
+              <span class="option-text">Yes</span>
+            </label>
 
-          <label class="option-item no-option">
-            <input
-              type="checkbox"
-              class="checkbox-input"
-              name="decision"
-              value="no"
-            />
-            <span class="option-text">No</span>
-          </label>
+            <label class="option-item">
+              <input
+                type="checkbox"
+                class="checkbox"
+                id="no"
+                name="decision"
+                value="no"
+              />
+              <span class="option-text">No</span>
+            </label>
+          </div>
         </div>
-      </div>
-      <div class="buttons-container">
-        <button class="back-button">Back</button>
-        <button class="continue-button" style="display: none">Continue</button>
+
+        <div class="button-container">
+          <button class="back-button">Back</button>
+          <button class="continue-button hidden" id="continueButton">Continue</button>
+        </div>
       </div>
     </main>
   </body>

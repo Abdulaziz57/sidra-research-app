@@ -14,43 +14,46 @@
     <link rel="stylesheet" href="grant-no-styles.css" />
   </head>
   <body>
-    <main class="container">
-      <img
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/fec6d81e4e6a05c3f7bfe9354ad525985702ab7a"
-        alt="Sidra Medicine Logo"
-        class="logo"
-      />
+    <main class="decision-tree-container">
+      <div class="content">
+        <!-- Sidra Logo -->
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/fec6d81e4e6a05c3f7bfe9354ad525985702ab7a"
+          alt="Sidra Medicine Logo"
+          class="logo"
+        />
 
-      <section class="question-container">
-        <h1 class="question">
-          Is this the research project Human-Subject based?
-        </h1>
-      </section>
+        <!-- Question Box -->
+        <section class="question-container">
+          <h2 id="main-question" class="question">
+            Is this research project Human-Subject based?
+          </h2>
+        </section>
 
-      <div class="options-container">
-        <div class="option">
-          <input type="checkbox" id="yes" class="checkbox" />
-          <label for="yes" class="option-label">Yes</label>
+        <!-- Options -->
+        <div class="options-wrapper">
+          <div class="options-container" role="radiogroup" aria-labelledby="main-question">
+            <div class="option">
+              <input type="checkbox" id="yes" class="checkbox" />
+              <label for="yes" class="option-label">Yes</label>
+            </div>
+
+            <div class="option">
+              <input type="checkbox" id="no" class="checkbox" />
+              <label for="no" class="option-label">No</label>
+            </div>
+
+            <div class="option">
+              <input type="checkbox" id="not-sure" class="checkbox" />
+              <label for="not-sure" class="option-label">Not Sure</label>
+            </div>
+          </div>
         </div>
 
-        <div class="option">
-          <input type="checkbox" id="no" class="checkbox" />
-          <label for="no" class="option-label">No</label>
-        </div>
-
-        <div class="option">
-          <input type="checkbox" id="not-sure" class="checkbox" />
-          <label for="not-sure" class="option-label">Not Sure</label>
-        </div>
-
+        <!-- Buttons -->
         <div class="button-container">
           <button type="button" class="back-button">Back</button>
-          <button
-            type="button"
-            class="continue-button"
-            id="continueButton"
-            style="display: none"
-          >
+          <button type="button" class="continue-button hidden" id="continueButton">
             Continue
           </button>
         </div>

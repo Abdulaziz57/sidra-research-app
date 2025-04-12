@@ -13,37 +13,39 @@
   </head>
   <body>
     <main class="decision-tree-container">
-      <img
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/5fe0ae6b079921c01f73a14cf750f2d80a7f98547c676dcb530b01ca135bafd4?placeholderIfAbsent=true&apiKey=80a512e1fc2a422285d8bcb5e67321ec"
-        alt="Decision Tree Header Image"
-        class="header-image"
-      />
+      <div class="content">
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/5fe0ae6b079921c01f73a14cf750f2d80a7f98547c676dcb530b01ca135bafd4?placeholderIfAbsent=true&apiKey=80a512e1fc2a422285d8bcb5e67321ec"
+          alt="Decision Tree Header Image"
+          class="header-image"
+        />
 
-      <section class="question-container">
-        <h2 class="main-question">Is this an animal based study?</h2>
-      </section>
+        <section class="question-container">
+          <h2 id="main-question" class="main-question">Is this an animal based study?</h2>
+        </section>
 
-      <div class="options-wrapper">
-        <div
-          class="options-container"
-          role="radiogroup"
-          aria-labelledby="main-question"
-        >
-          <label class="option-item yes-option" role="radio" tabindex="0">
-            <div class="checkbox-square"></div>
-            <span class="option-text">Yes</span>
-          </label>
+        <div class="options-wrapper">
+          <div
+            class="options-container"
+            role="radiogroup"
+            aria-labelledby="main-question"
+          >
+            <label class="option-item yes-option" role="radio" tabindex="0" aria-checked="false">
+              <div class="checkbox-square"></div>
+              <span class="option-text">Yes</span>
+            </label>
 
-          <label class="option-item no-option" role="radio" tabindex="0">
-            <div class="checkbox-square"></div>
-            <span class="option-text">No</span>
-          </label>
+            <label class="option-item no-option" role="radio" tabindex="0" aria-checked="false">
+              <div class="checkbox-square"></div>
+              <span class="option-text">No</span>
+            </label>
+          </div>
         </div>
-      </div>
 
-      <div class="buttons-container">
-        <button class="back-button">Back</button>
-        <button class="continue-button">Continue</button>
+        <div class="buttons-container">
+          <button class="back-button" aria-label="Go back to the previous step">Back</button>
+          <button class="continue-button hidden" aria-label="Continue to next step">Continue</button>
+        </div>
       </div>
     </main>
   </body>

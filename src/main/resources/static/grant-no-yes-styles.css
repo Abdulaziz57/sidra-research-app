@@ -1,314 +1,185 @@
 /* Base styles */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f3f4f6;
+  color: #222;
+  min-height: 100vh;
+  line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Container layout */
+.decision-tree-container {
+  width: 100%;
+  max-width: 960px;
+  padding: 100px 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* White card */
+.content {
+  width: 100%;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Logo */
+.logo {
+  width: 220px;
+  height: auto;
+  margin-bottom: 1.5rem;
+  object-fit: contain;
+}
+
+/* Question box */
+.question-container {
+  background-color: #036269;
+  color: #fff;
+  border-radius: 12px;
+  padding: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 640px;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.main-question {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+/* Options */
+.options-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 800px;
+  padding: 0 1rem;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #222;
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #036269;
+  background-color: #fff;
+  border-radius: 4px;
+  appearance: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.checkbox:checked::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background-color: #036269;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 2px;
+  transform: translate(-50%, -50%);
+}
+
+/* Buttons */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  width: 100%;
+  max-width: 800px;
+}
+
+.back-button,
+.continue-button {
+  background: #036269;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  max-width: 200px;
+}
+
+.back-button:hover,
+.continue-button:hover {
+  background-color: #024b50;
+}
+
+.back-button:focus,
+.continue-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(3, 98, 105, 0.3);
+}
+
+/* Hidden continue button */
+.continue-button.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .main-question {
+    font-size: 1.3rem;
   }
-  
-  body {
-    font-family:
-      Inter,
-      -apple-system,
-      Roboto,
-      Helvetica,
-      sans-serif;
-  }
-  
-  /* Main container */
-  .decision-tree {
-    background-color: rgba(243, 244, 246, 1);
-    border: 1px solid rgba(0, 0, 0, 1);
-    display: flex;
-    padding: 30px 40px 60px;
-    flex-direction: column;
-    align-items: flex-start;
-    font-size: 18px;
-    color: rgba(255, 255, 255, 1);
-    font-weight: 500;
-    line-height: 1.3;
-    min-height: 100vh;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  /* Logo image */
-  .logo-image {
-    aspect-ratio: 2.59;
-    object-fit: contain;
-    object-position: center;
-    width: 200px;
-    max-width: 100%;
-  }
-  
-  /* Question container */
-  .question-container {
-    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-    border: 1px solid rgba(229, 229, 229, 1);
-    border-radius: 10px;
-    background-color: rgba(0, 128, 128, 1);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-    align-self: center;
-    margin-top: 50px;
-    width: 100%;
-    max-width: 800px;
-    padding: 20px 30px;
-    overflow: hidden;
-  }
-  
-  .question-text {
-    font-size: 24px;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 1);
-    text-align: center;
-  }
-  
-  /* Options wrapper and container */
-  .options-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-  }
-  
-  .options-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 800px;
-    gap: 30px;
-    padding-left: 30px;
-  }
-  
-  /* Option items */
-  .option-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    color: rgba(0, 0, 0, 1);
-    white-space: nowrap;
-    cursor: pointer;
-  }
-  
-  .option-item:focus {
-    outline: none;
-  }
-  
-  .option-item:focus .checkbox-input {
-    outline: 2px solid rgba(0, 128, 128, 0.7);
-  }
-  
-  .checkbox-input {
-    width: 24px;
-    height: 24px;
-    border: 2px solid rgba(0, 128, 128, 0.96);
-    background: #fff;
-    cursor: pointer;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    position: relative;
-    flex-shrink: 0;
-    transition: all 0.2s ease;
-  }
-  
-  .checkbox-input:checked::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 12px;
-    height: 12px;
-    background-color: #008080;
-  }
-  
-  @media (min-width: 768px) {
-    .checkbox-input {
-      width: 30px;
-      height: 30px;
-      border-width: 3px;
-    }
-  
-    .checkbox-input:checked::after {
-      width: 15px;
-      height: 15px;
-    }
-  }
-  
-  @media (min-width: 1200px) {
-    .checkbox-input {
-      width: 36px;
-      height: 36px;
-      border-width: 4px;
-    }
-  
-    .checkbox-input:checked::after {
-      width: 18px;
-      height: 18px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .checkbox-input {
-      width: 20px;
-      height: 20px;
-      border-width: 2px;
-    }
-  
-    .checkbox-input:checked::after {
-      width: 10px;
-      height: 10px;
-    }
-  }
-  
+
   .option-text {
-    font-size: 18px;
-    font-weight: 500;
+    font-size: 1rem;
   }
-  
-  /* Buttons container */
-  .buttons-container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 800px;
-    margin-top: 50px;
-    align-self: center;
+
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
   }
-  
-  /* Back button */
-  .back-button {
-    border: none;
-    border-radius: 20px;
-    background-color: rgba(3, 98, 105, 1);
-    width: 200px;
-    max-width: 45%;
-    padding: 12px 30px;
-    font-weight: 700;
-    white-space: nowrap;
-    font-size: 18px;
-    color: rgba(255, 255, 255, 1);
-    font-family:
-      Inter,
-      -apple-system,
-      Roboto,
-      Helvetica,
-      sans-serif;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  
-  /* Continue button */
+
+  .back-button,
   .continue-button {
-    border: none;
-    border-radius: 20px;
-    background-color: rgba(3, 98, 105, 1);
-    width: 200px;
-    max-width: 45%;
-    padding: 12px 30px;
-    font-weight: 700;
-    white-space: nowrap;
-    font-size: 18px;
-    color: rgba(255, 255, 255, 1);
-    font-family:
-      Inter,
-      -apple-system,
-      Roboto,
-      Helvetica,
-      sans-serif;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  
-  .continue-button:hover,
-  .back-button:hover {
-    background-color: rgba(2, 78, 84, 1);
-  }
-  
-  .continue-button:focus,
-  .back-button:focus {
-    outline: 3px solid rgba(255, 255, 255, 0.5);
-    outline-offset: 2px;
-  }
-  
-  .back-button:hover {
-    background-color: rgba(2, 78, 84, 1);
-  }
-  
-  .back-button:focus {
-    outline: 3px solid rgba(255, 255, 255, 0.5);
-    outline-offset: 2px;
-  }
-  
-  .back-button.clicked {
-    transform: scale(0.98);
-    background-color: rgba(2, 78, 84, 1);
-  }
-  
-  /* Responsive styles */
-  @media (max-width: 991px) {
-    .decision-tree {
-      padding: 20px 15px 40px;
-    }
-  
-    .question-container {
-      max-width: 100%;
-      margin-top: 30px;
-      padding: 15px;
-    }
-  
-    .question-text {
-      font-size: 20px;
-    }
-  
-    .options-wrapper {
-      margin-top: 30px;
-    }
-  
-    .options-container {
-      gap: 20px;
-      padding-left: 15px;
-    }
-  
-    .option-item {
-      white-space: initial;
-    }
-  
-    .option-text {
-      font-size: 16px;
-    }
-  
-    .buttons-container {
-      margin-top: 30px;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-  
-    .back-button,
-    .continue-button {
-      font-size: 16px;
-      padding: 10px 20px;
-      white-space: initial;
-      width: 100%;
-      max-width: 200px;
-    }
-  }
-  
-  /* Additional styles for better page fit */
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
     width: 100%;
+    max-width: 300px;
   }
-  
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    background-color: #f5f5f5;
+
+  .logo {
+    width: 160px;
   }
-  
+}

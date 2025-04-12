@@ -1,319 +1,195 @@
 /* Base styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: "Inter", sans-serif;
-    background-color: #f3f4f6;
-    min-height: 100vh;
-  }
-  
-  /* Container */
-  .container {
-    background-color: #f3f4f6;
-    min-height: 100vh;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  /* Logo */
-  .logo {
-    width: 200px;
-    height: auto;
-    margin-top: 20px;
-    object-fit: contain;
-  }
-  
-  /* Question container */
-  .question-container {
-    width: 100%;
-    max-width: 800px;
-    background: #008080;
-    border-radius: 10px;
-    border: 1px solid #e5e5e5;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    padding: 15px 30px;
-  }
-  
-  /* Question */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f3f4f6;
+  color: #222;
+  min-height: 100vh;
+  line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Outer container for spacing & alignment */
+.decision-tree-container {
+  width: 100%;
+  max-width: 960px;
+  padding: 100px 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* White content box (matches site design) */
+.content {
+  width: 100%;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Logo */
+.logo {
+  width: 220px;
+  height: auto;
+  margin-bottom: 1.5rem;
+  object-fit: contain;
+}
+
+/* Question box */
+.question-container {
+  background-color: #036269;
+  color: #fff;
+  border-radius: 12px;
+  padding: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 640px;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.question {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+/* Options wrapper */
+.options-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+
+/* Options container */
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 800px;
+  padding: 0 1rem;
+}
+
+/* Option row */
+.option {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #222;
+  cursor: pointer;
+}
+
+/* Checkbox styling */
+.checkbox {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #036269;
+  background-color: #fff;
+  border-radius: 4px;
+  position: relative;
+  appearance: none;
+  cursor: pointer;
+}
+
+.checkbox:checked::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background-color: #036269;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 2px;
+  transform: translate(-50%, -50%);
+}
+
+/* Option label */
+.option-label {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Buttons container */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  width: 100%;
+  max-width: 800px;
+}
+
+/* Button styles */
+.back-button,
+.continue-button {
+  background: #036269;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  max-width: 200px;
+}
+
+.back-button:hover,
+.continue-button:hover {
+  background-color: #024b50;
+}
+
+.back-button:focus,
+.continue-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(3, 98, 105, 0.3);
+}
+
+/* Hidden continue button */
+.continue-button.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
   .question {
-    color: #fff;
-    font-family: "Inter", sans-serif;
-    font-size: 22px;
-    font-weight: 400;
-    line-height: 130%;
-    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    font-size: 1.3rem;
   }
-  
-  /* Options container */
-  .options-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
-    max-width: 800px;
-    padding: 0 30px;
-  }
-  
-  /* Option */
-  .option {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-  
-  /* Checkbox */
-  .checkbox {
-    width: 24px;
-    height: 24px;
-    border: 2px solid rgba(0, 128, 128, 0.96);
-    background: #fff;
-    cursor: pointer;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    position: relative;
-  }
-  
-  .checkbox:checked::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 12px;
-    height: 12px;
-    background-color: #008080;
-  }
-  
-  /* Option label */
+
   .option-label {
-    color: #000;
-    font-family: "Inter", sans-serif;
-    font-size: 18px;
-    font-weight: 400;
+    font-size: 1rem;
   }
-  
-  /* Button container */
+
   .button-container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 30px;
-  }
-  
-  /* Back button */
-  .back-button {
-    width: 120px;
-    height: 40px;
-    background: #036269;
-    border-radius: 20px;
-    border: none;
-    color: #fff;
-    font-family: "Inter", sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease;
+    gap: 1rem;
   }
-  
-  .back-button:hover {
-    background-color: #024b50;
-  }
-  
-  .back-button:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(3, 98, 105, 0.3);
-  }
-  
-  /* Continue button */
+
+  .back-button,
   .continue-button {
-    width: 120px;
-    height: 40px;
-    background: #036269;
-    border-radius: 20px;
-    border: none;
-    color: #fff;
-    font-family: "Inter", sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 300px;
   }
-  
-  .continue-button:hover {
-    background-color: #024b50;
+
+  .logo {
+    width: 160px;
   }
-  
-  .continue-button:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(3, 98, 105, 0.3);
-  }
-  
-  /* Responsive styles */
-  @media (min-width: 768px) {
-    .logo {
-      width: 300px;
-    }
-  
-    .question-container {
-      padding: 20px 40px;
-    }
-  
-    .question {
-      font-size: 28px;
-    }
-  
-    .options-container {
-      gap: 25px;
-      padding: 0 40px;
-    }
-  
-    .option {
-      gap: 30px;
-    }
-  
-    .checkbox {
-      width: 30px;
-      height: 30px;
-      border-width: 3px;
-    }
-  
-    .checkbox:checked::after {
-      width: 15px;
-      height: 15px;
-    }
-  
-    .option-label {
-      font-size: 24px;
-    }
-  
-    .back-button,
-    .continue-button {
-      width: 150px;
-      height: 45px;
-      font-size: 18px;
-    }
-  }
-  
-  @media (min-width: 1200px) {
-    .logo {
-      width: 350px;
-    }
-  
-    .question-container {
-      max-width: 1000px;
-      padding: 25px 50px;
-    }
-  
-    .question {
-      font-size: 32px;
-    }
-  
-    .options-container {
-      max-width: 1000px;
-      gap: 30px;
-      padding: 0 50px;
-    }
-  
-    .option {
-      gap: 40px;
-    }
-  
-    .checkbox {
-      width: 36px;
-      height: 36px;
-      border-width: 4px;
-    }
-  
-    .checkbox:checked::after {
-      width: 18px;
-      height: 18px;
-    }
-  
-    .option-label {
-      font-size: 28px;
-    }
-  
-    .button-container {
-      margin-top: 40px;
-    }
-  
-    .back-button,
-    .continue-button {
-      width: 180px;
-      height: 50px;
-      border-radius: 25px;
-      font-size: 20px;
-    }
-  }
-  
-  /* For very small screens */
-  @media (max-width: 480px) {
-    .container {
-      padding: 15px;
-    }
-  
-    .logo {
-      width: 150px;
-    }
-  
-    .question-container {
-      padding: 12px 20px;
-    }
-  
-    .question {
-      font-size: 18px;
-    }
-  
-    .options-container {
-      gap: 15px;
-      padding: 0 20px;
-    }
-  
-    .option {
-      gap: 15px;
-    }
-  
-    .checkbox {
-      width: 20px;
-      height: 20px;
-      border-width: 2px;
-    }
-  
-    .checkbox:checked::after {
-      width: 10px;
-      height: 10px;
-    }
-  
-    .option-label {
-      font-size: 16px;
-    }
-  
-    .button-container {
-      flex-direction: column;
-      gap: 15px;
-      align-items: flex-start;
-    }
-  
-    .back-button,
-    .continue-button {
-      width: 100%;
-      max-width: 200px;
-    }
-  }
-  
+}

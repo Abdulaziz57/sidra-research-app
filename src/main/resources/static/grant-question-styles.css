@@ -1,219 +1,183 @@
 /* Base styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f3f4f6;
+  color: #222;
+  min-height: 100vh;
+  line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Layout */
+.decision-tree-container {
+  width: 100%;
+  max-width: 960px;
+  padding: 100px 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content {
+  width: 100%;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Logo */
+.logo {
+  width: 220px;
+  height: auto;
+  margin-bottom: 1.5rem;
+}
+
+/* Question */
+.question-container {
+  background-color: #036269;
+  color: #fff;
+  border-radius: 12px;
+  padding: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 640px;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.main-question {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+/* Options */
+.options-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 800px;
+  padding: 0 1rem;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #222;
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #036269;
+  background-color: #fff;
+  border-radius: 4px;
+  appearance: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.checkbox:checked::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background-color: #036269;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 2px;
+  transform: translate(-50%, -50%);
+}
+
+/* Buttons */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  width: 100%;
+  max-width: 800px;
+}
+
+.back-button,
+.continue-button {
+  background: #036269;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  max-width: 200px;
+}
+
+.back-button:hover,
+.continue-button:hover {
+  background-color: #024b50;
+}
+
+.back-button:focus,
+.continue-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(3, 98, 105, 0.3);
+}
+
+/* Hide button until selection */
+.continue-button.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .main-question {
+    font-size: 1.3rem;
   }
-  
-  body {
-    font-family: "Inter", sans-serif;
-    background-color: #f3f4f6;
-    min-height: 100vh;
+
+  .option-text {
+    font-size: 1rem;
   }
-  
-  /* App container */
-  .app {
-    min-height: 100vh;
-    background: #f3f4f6;
-    padding: 20px;
-  }
-  
-  /* Logo section */
-  .logo {
-    padding: 20px 0 20px 20px;
-  }
-  
-  .logo-img {
-    width: 200px;
-    height: auto;
-  }
-  
-  /* Question container */
-  .question-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  
-  /* Question */
-  .question {
-    background: #008080;
-    color: #fff;
-    padding: 15px 20px;
-    border-radius: 10px;
-    border: 1px solid #e5e5e5;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: "Inter", sans-serif;
-    font-size: 22px;
-    line-height: 130%;
-    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-  }
-  
-  /* Options section */
-  .options {
-    margin-top: 30px;
-  }
-  
-  /* Option */
-  .option {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-  }
-  
-  /* Checkbox styling */
-  .checkbox {
-    width: 24px;
-    height: 24px;
-    border: 2px solid rgba(0, 128, 128, 0.96);
-    background: #fff;
-    margin-right: 15px;
-    appearance: none;
-    cursor: pointer;
-    position: relative;
-  }
-  
-  .checkbox:checked::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 12px;
-    height: 12px;
-    background-color: #008080;
-  }
-  
-  /* Label */
-  .label {
-    color: #000;
-    font-family: "Inter", sans-serif;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 130%;
-  }
-  
-  /* Button container */
+
   .button-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
   }
-  
-  /* Back button */
-  .back-button {
-    width: 120px;
-    height: 40px;
-    background: #036269;
-    border-radius: 20px;
-    border: none;
-    color: #fff;
-    font-family: "Inter", sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 130%;
-    cursor: pointer;
-  }
-  
-  /* Continue button */
+
+  .back-button,
   .continue-button {
-    width: 120px;
-    height: 40px;
-    background: #036269;
-    border-radius: 20px;
-    border: none;
-    color: #fff;
-    font-family: "Inter", sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 130%;
-    cursor: pointer;
+    width: 100%;
+    max-width: 300px;
   }
-  
-  /* Hover states */
-  .back-button:hover,
-  .continue-button:hover {
-    background-color: #024b50;
+
+  .logo {
+    width: 160px;
   }
-  
-  /* Focus states */
-  .back-button:focus,
-  .continue-button:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(3, 98, 105, 0.3);
-  }
-  
-  /* Responsive styles */
-  @media (min-width: 768px) {
-    .logo-img {
-      width: 250px;
-    }
-  
-    .question {
-      font-size: 26px;
-      padding: 18px 25px;
-    }
-  
-    .checkbox {
-      width: 28px;
-      height: 28px;
-      margin-right: 20px;
-    }
-  
-    .checkbox:checked::after {
-      width: 14px;
-      height: 14px;
-    }
-  
-    .label {
-      font-size: 22px;
-    }
-  
-    .back-button,
-    .continue-button {
-      width: 150px;
-      height: 45px;
-      font-size: 18px;
-    }
-  }
-  
-  @media (min-width: 1200px) {
-    .logo {
-      padding: 20px 0 30px 40px;
-    }
-  
-    .logo-img {
-      width: 300px;
-      height: auto;
-    }
-  
-    .question {
-      font-size: 32px;
-      padding: 20px 30px;
-    }
-  
-    .checkbox {
-      width: 32px;
-      height: 32px;
-      border-width: 3px;
-      margin-right: 25px;
-    }
-  
-    .checkbox:checked::after {
-      width: 16px;
-      height: 16px;
-    }
-  
-    .label {
-      font-size: 28px;
-    }
-  
-    .back-button,
-    .continue-button {
-      width: 180px;
-      height: 50px;
-      border-radius: 25px;
-      font-size: 20px;
-    }
-  }
-  
+}

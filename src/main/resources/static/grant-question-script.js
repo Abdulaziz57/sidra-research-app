@@ -1,61 +1,56 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Get checkbox elements
-    const yesCheckbox = document.getElementById("yes");
-    const noCheckbox = document.getElementById("no");
-    const continueButton = document.getElementById("continueButton");
-    const backButton = document.querySelector(".back-button");
-    var loc = window.location.pathname;
-    var dir = loc.substring(0, loc.lastIndexOf('/'));
-    // Function to handle checkbox changes
-    function handleCheckboxChange(selectedCheckbox, otherCheckbox) {
-      // If this checkbox is checked
-      if (selectedCheckbox.checked) {
-        // Uncheck the other checkbox
-        otherCheckbox.checked = false;
-        
-        // Show the continue button
-        continueButton.style.display = "block";
-      } else {
-        // If neither checkbox is checked, hide the continue button
-        if (!otherCheckbox.checked) {
-          continueButton.style.display = "none";
-        }
+  const yesCheckbox = document.getElementById("yes");
+  const noCheckbox = document.getElementById("no");
+  const continueButton = document.getElementById("continueButton");
+  const backButton = document.querySelector(".back-button");
+
+  const checkboxes = [yesCheckbox, noCheckbox];
+  const loc = window.location.pathname;
+  const dir = loc.substring(0, loc.lastIndexOf("/"));
+
+  let selectedOption = null;
+
+
+  function handleCheckboxChange(changedCheckbox) {
+    if (changedCheckbox.checked) {
+      // Uncheck the other checkbox
+      checkboxes.forEach((cb) => {
+        if (cb !== changedCheckbox) cb.checked = false;
+      });
+
+      selectedOption = changedCheckbox.id;
+      continueButton.classList.remove("hidden");
+    } else {
+      // If both unchecked, hide continue button
+      const anyChecked = checkboxes.some((cb) => cb.checked);
+      if (!anyChecked) {
+        selectedOption = null;
+        continueButton.classList.add("hidden");
       }
     }
-  
-    // Add event listeners to checkboxes
-    yesCheckbox.addEventListener("change", function () {
-      handleCheckboxChange(yesCheckbox, noCheckbox);
-    });
-  
-    noCheckbox.addEventListener("change", function () {
-      handleCheckboxChange(noCheckbox, yesCheckbox);
-    });
-  
-    // Add event listener to continue button
-    continueButton.addEventListener("click", function () {
-      if (yesCheckbox.checked) {
-        // Navigate to the "Yes" destination
-        //alert("Navigating to Grant Submission Research Study path");
-        // In a real implementation, you would use:
-        localStorage.setItem("grant-question-selection", "yes");
-        window.location.href = dir+"/grant-yes-path.html";
-      } else if (noCheckbox.checked) {
-        // Navigate to the "No" destination
-        //alert("Navigating to Non-Grant Research Study path");
-        // In a real implementation, you would use:
-        localStorage.setItem("grant-question-selection", "no");
-        window.location.href = dir+"/grant-no-path.html";
-      }
-    });
-  
-    // Add event listener to back button
-    backButton.addEventListener("click", function () {
-      // Navigate back
-      //alert("Going back to previous page");
-      // In a real implementation, you would use:
-      localStorage.setItem("grant-question-selection", null);
-      window.location.href = dir+"/database-text-questions.html";
+  }
+
+  // Listen for checkbox changes
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener("change", () => {
+      handleCheckboxChange(checkbox);
     });
   });
-  
+
+  // Handle continue click
+  continueButton.addEventListener("click", function () {
+    if (selectedOption === "yes") {
+      localStorage.setItem("grant-question-selection", "yes");
+      window.location.href = dir + "/grant-yes-path.html";
+    } else if (selectedOption === "no") {
+      localStorage.setItem("grant-question-selection", "no");
+      window.location.href = dir + "/grant-no-path.html";
+    }
+  });
+
+  // Handle back click
+  backButton.addEventListener("click", function () {
+    localStorage.setItem("grant-question-selection", null);
+    window.location.href = dir + "/database-text-questions.html";
+  });
+});
