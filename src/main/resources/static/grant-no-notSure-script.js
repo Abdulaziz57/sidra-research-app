@@ -31,18 +31,34 @@ document.addEventListener("DOMContentLoaded", function () {
   /**
    * Handle file selection
    */
-  fileInput.addEventListener("change", function (e) {
-    if (!e.target.files.length) return;
-    const newFiles = Array.from(e.target.files);
-
-    // Prevent duplicate files
-    uploadedFiles = [...uploadedFiles, ...newFiles].filter(
+  fileInput.addEventListener("change", function (event) {
+    if (!event.target.files.length) return;
+  
+    const newFiles = Array.from(event.target.files);
+    const validExtensions = [".pdf", ".docx"];
+    const maxSize = 25 * 1024 * 1024; // 25MB
+  
+    const filteredFiles = newFiles.filter((file) => {
+      const ext = file.name.slice(file.name.lastIndexOf(".")).toLowerCase();
+      if (!validExtensions.includes(ext)) {
+        alert(`"${file.name}" is not a supported file type. Only .pdf and .docx are allowed.`);
+        return false;
+      }
+      if (file.size > maxSize) {
+        alert(`"${file.name}" exceeds the 25MB size limit.`);
+        return false;
+      }
+      return true;
+    });
+  
+    selectedFiles = [...selectedFiles, ...filteredFiles].filter(
       (file, index, self) =>
         self.findIndex((f) => f.name === file.name) === index
     );
-
+  
     updateFileList();
   });
+  
 
   /**
    * Handle drag and drop events

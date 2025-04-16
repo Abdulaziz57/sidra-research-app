@@ -4,6 +4,7 @@ const multer = require("multer");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
 const fs = require("fs");
+const path = require("path");
 
 const app = express();
 const PORT = 5050;
@@ -12,15 +13,29 @@ const PORT = 5050;
 app.use(cors());
 app.use(express.json());
 
-// Configure multer for file uploads
-const upload = multer({ dest: "uploads/" });
+// Allowed file types and size (25MB)
+const allowedExtensions = [".pdf", ".doc", ".docx"];
+const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB
+
+// Configure multer for file uploads with validation
+const upload = multer({
+  dest: "uploads/",
+  limits: { fileSize: MAX_FILE_SIZE },
+  fileFilter: (req, file, cb) => {
+    const ext = path.extname(file.originalname).toLowerCase();
+    if (!allowedExtensions.includes(ext)) {
+      return cb(new Error("Only PDF, DOC, and DOCX files are allowed."));
+    }
+    cb(null, true);
+  },
+});
 
 // Email configuration
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: process.env.EMAIL, // Use environment variable for security
-    pass: process.env.PASSWORD, // App password (not regular password)
+    user: process.env.EMAIL,
+    pass: process.env.PASSWORD,
   },
 });
 
@@ -39,7 +54,7 @@ app.post("/upload", upload.array("files"), async (req, res) => {
 
     const mailOptions = {
       from: process.env.EMAIL,
-      to: "1rAAAesearchpmo@sidra.org", // Replace with the actual recipient email
+      to: "1rAAAesearchpmo@sidra.org",
       subject: "New Grant Application Submission",
       text: "Attached are the submitted grant application documents.",
       attachments: attachments,
@@ -48,7 +63,7 @@ app.post("/upload", upload.array("files"), async (req, res) => {
     // Send email
     await transporter.sendMail(mailOptions);
 
-    // Cleanup uploaded files after sending email
+    // Cleanup uploaded files
     req.files.forEach((file) => fs.unlinkSync(file.path));
 
     res.status(200).send("Email sent successfully with attachments.");
