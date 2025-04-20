@@ -28,11 +28,12 @@
   }
   
   .sidebar {
-    width: 20%;
-    min-width: 250px;
+    width: 250px; /* ✅ Adjusted to align with logo/sign out */
+    min-width: 200px;
     background-color: #fff;
     border-right: 2px solid #a2a4a8;
   }
+  
   
   .sidebar-content {
     padding: 2rem 1.5rem;
