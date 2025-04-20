@@ -68,6 +68,8 @@ async function getUserEmailFromBackend() {
 
 
     const email = await getUserEmailFromBackend();
+    const now = new Date();
+    const submitted_at = `${now.getFullYear()}-${(now.getMonth()+1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')},${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
 
 
     // Construct the record
@@ -78,8 +80,9 @@ async function getUserEmailFromBackend() {
       Project_name: localStorage.getItem("Project_name") || allData.question2,
       Project_type: localStorage.getItem("Project_type") || decisionFlow,
       Department: localStorage.getItem("Department") || allData.question3,
-      submitted_at: new Date().toISOString(),
+      submitted_at: submitted_at,
     };
+    console.log("New Record:", newRecord);
 
   // Attempt to insert the record
   const { data, error } = await supabase

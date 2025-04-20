@@ -1,101 +1,121 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 40px 20px;
-    min-height: 100vh;
-  }
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
 
-  .main-content {
-    width: 100%;
-    max-width: 1100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.main-content {
+  width: 100%;
+  max-width: 1850px; /* Expanded width for layout */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .page-title {
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
+.page-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
 
-  .action-bar {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
+.action-bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
 
-  .back-button,
-  .refresh-button {
-    background-color: #036269;
-    color: white;
-    font-family: "Inter", sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    border: none;
-    border-radius: 20px;
-    padding: 8px 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
+.back-button,
+.refresh-button {
+  background-color: #036269;
+  color: white;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
-  .back-button:hover,
-  .refresh-button:hover {
-    background-color: #024b50;
-  }
+.back-button:hover,
+.refresh-button:hover {
+  background-color: #024b50;
+}
 
-  .applications-container {
-    width: 100%;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
+.applications-container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+  width: 100%;            /* Allow full width */
+}
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-  }
+table {
+  width: 100%;            /* Fill container */
+  border-collapse: collapse;
+  margin-top: 10px;
+  table-layout: auto;     /* Let columns size dynamically */
+}
 
-  th, td {
-    padding: 12px;
-    border: 1px solid #ddd;
-    text-align: left;
-  }
+th {
+  background-color: #005F73;
+  color: white;
+  font-size: 14px;
+  white-space: nowrap;    /* Prevent header wrapping */
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
 
-  th {
-    background-color: #005F73;
-    color: white;
-    font-size: 14px;
-  }
+td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+  white-space: nowrap;    /* Default: no wrapping */
+}
 
-  tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
+/* Wrap long text ONLY in columns 4–8 */
+td:nth-child(4),
+td:nth-child(5),
+td:nth-child(6),
+td:nth-child(7),
+td:nth-child(8) {
+  white-space: normal;
+  word-break: break-word;
+  max-width: 300px;       /* Wider to reduce wrapping */
+}
 
-  .status-dropdown {
-    font-family: "Inter", sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 5px 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    color: #333;
-    cursor: pointer;
-  }
-  .status-dropdown:focus {
-    outline: none;
-    border-color: #036269;
-    box-shadow: 0 0 0 3px rgba(3, 98, 105, 0.3);
-  }
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
-  .sidra-logo {
-    width: 360px;
-    margin-bottom: 20px;
-  }
+.status-dropdown {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+}
+
+.status-dropdown:focus {
+  outline: none;
+  border-color: #036269;
+  box-shadow: 0 0 0 3px rgba(3, 98, 105, 0.3);
+}
+
+.sidra-logo {
+  width: 360px;
+  margin-bottom: 20px;
+}

@@ -75,7 +75,14 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         cell.appendChild(dropdown);
       } else {
-        cell.textContent = app[key] ?? "-";
+        const value = app[key];
+        if (key === "submitted_at" && typeof value === "string") {
+          const date = new Date(value);
+          cell.textContent = date.toLocaleString(); // renders in local format
+        } else {
+          cell.textContent = value || "-";
+        }
+        
       }
 
       row.appendChild(cell);
